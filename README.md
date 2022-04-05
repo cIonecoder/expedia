@@ -5,6 +5,9 @@
 ## Table of Contents
 
 - [MVP](https://github.com/cIonecoder/expedia/wiki/MVP)
+- [Rule](https://github.com/cIonecoder/expedia/issues/1)
+- [MSA](https://github.com/cIonecoder/expedia/issues/1)
+- Flow
 
 ## Micro Service Archtictures
 
