@@ -5,3 +5,19 @@
 ## Table of Contents
 
 - [MVP](https://github.com/cIonecoder/expedia/wiki/MVP)
+
+## Micro Service Archtictures
+
+- __authentication-service__
+  - Kotlin, Spring Data JDBC
+- __authorization-service__
+  - Kotlin, Spring Data JDBC
+- __b2b-service__
+  - Java, Spring Data JPA
+- __b2c-service__
+  - Java, Spring Data JPA
+- __payment-service__ 
+  - Java, Spring Data JPA
+- __booking-service__
+  - Kotlin, Spring Data JDBC
+
