@@ -16,11 +16,10 @@
 - __authorization-service__
   - Kotlin, Spring Data JDBC
 - __b2b-service__
-  - Java, Spring Data JPA
+  - Kotlin, Java, Spring Data JPA
 - __b2c-service__
-  - Java, Spring Data JPA
+  - Kotlin, Java, Spring Data JPA
 - __payment-service__ 
-  - Java, Spring Data JPA
+  - Kotlin, Java, Spring Data JPA
 - __booking-service__
   - Kotlin, Spring Data JDBC
-
