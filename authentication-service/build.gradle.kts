@@ -31,9 +31,11 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-jackson:0.11.2")
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")
     implementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1")
+    implementation("com.google.guava:guava:31.1-jre")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor:2.6.6")
     developmentOnly("org.springframework.boot:spring-boot-devtools:2.6.6")
     runtimeOnly("mysql:mysql-connector-java:8.0.28")
+    runtimeOnly("com.h2database:h2")
 
     // Spring Rest Docs
     testImplementation("org.springframework.restdocs:spring-restdocs-restassured:2.0.6.RELEASE")
