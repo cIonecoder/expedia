@@ -3,15 +3,11 @@ package com.expedia.b2b.acceptance.accommodation;
 import com.expedia.b2b.acceptance.AcceptanceTest;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.expedia.b2b.acceptance.accommodation.AccommodationParams.*;
-import static com.expedia.b2b.acceptance.accommodation.AccommodationSteps.*;
+import static com.expedia.b2b.acceptance.accommodation.AccommodationSteps.숙박업체_생성_요청;
+import static com.expedia.b2b.acceptance.accommodation.AccommodationSteps.숙박업체_조회_요청;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AccommodationAcceptanceTest extends AcceptanceTest {
@@ -21,24 +17,10 @@ public class AccommodationAcceptanceTest extends AcceptanceTest {
        - then  : 원하는 숙박업체의 정보로 숙박업체가 신규 생성됨
      */
     @Test
-    @DisplayName("숙박업체를 생성한다.")
     void 숙박업체_생성() {
         // given
-        Map<String, Object> accommodationMap = 숙박업체_정보_셋팅();
-        Map<String, Object> accommodationRoleMap = 숙박업체_권한_정보_셋팅();
-        Map<String, Object> accommodationRoomMap = 객실_정보_셋팅();
-        Map<String, Object> accommodationRoomInfoMap = 객실_부가정보_셋팅();
-        Map<String, Object> accommodationRoomFeeMap = 객실_요금_셋팅();
-
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("accommodationDto", accommodationMap);
-        paramMap.put("accommodationRoleDto", accommodationRoleMap);
-        paramMap.put("accommodationRoomDto", accommodationRoomMap);
-        paramMap.put("accommodationRoomInfoDto", accommodationRoomInfoMap);
-        paramMap.put("accommodationRoomFeeDto", accommodationRoomFeeMap);
-
         // when
-        ExtractableResponse<Response> response = 숙박업체_생성_요청(paramMap);
+        ExtractableResponse<Response> response = 숙박업체_생성_요청();
 
         // then
         assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
@@ -50,23 +32,9 @@ public class AccommodationAcceptanceTest extends AcceptanceTest {
        - then  : 정상적으로 생성된 숙박업체가 조회됨
      */
     @Test
-    @DisplayName("숙박업체를 조회한다.")
     void 숙박업체_조회() {
         // given
-        Map<String, Object> accommodationMap = 숙박업체_정보_셋팅();
-        Map<String, Object> accommodationRoleMap = 숙박업체_권한_정보_셋팅();
-        Map<String, Object> accommodationRoomMap = 객실_정보_셋팅();
-        Map<String, Object> accommodationRoomInfoMap = 객실_부가정보_셋팅();
-        Map<String, Object> accommodationRoomFeeMap = 객실_요금_셋팅();
-
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("accommodationDto", accommodationMap);
-        paramMap.put("accommodationRoleDto", accommodationRoleMap);
-        paramMap.put("accommodationRoomDto", accommodationRoomMap);
-        paramMap.put("accommodationRoomInfoDto", accommodationRoomInfoMap);
-        paramMap.put("accommodationRoomFeeDto", accommodationRoomFeeMap);
-
-        ExtractableResponse<Response> response = 숙박업체_생성_요청(paramMap);
+        ExtractableResponse<Response> response = 숙박업체_생성_요청();
         Long accommodationId = response.jsonPath().getLong("accommodationId");
 
         // when

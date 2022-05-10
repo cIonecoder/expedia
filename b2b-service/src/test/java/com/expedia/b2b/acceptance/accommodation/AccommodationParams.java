@@ -1,15 +1,10 @@
 package com.expedia.b2b.acceptance.accommodation;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AccommodationParams {
-    @Test
-    @DisplayName("숙박업체 정보를 셋팅한다.")
+public final class AccommodationParams {
     static Map<String, Object> 숙박업체_정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("accommodationName", "Shilla Stay Mapo");
@@ -34,8 +29,6 @@ public class AccommodationParams {
         return params;
     }
 
-    @Test
-    @DisplayName("숙박업체 권한 정보를 셋팅한다.")
     static Map<String, Object> 숙박업체_권한_정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("progStatusCd", 10);
@@ -47,8 +40,6 @@ public class AccommodationParams {
         return params;
     }
 
-    @Test
-    @DisplayName("숙박업체의 객실 정보를 셋팅한다.")
     static Map<String, Object> 객실_정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("roomType", "VIP");
@@ -60,8 +51,6 @@ public class AccommodationParams {
         return params;
     }
 
-    @Test
-    @DisplayName("숙박업체의 객실 부가 정보를 셋팅한다.")
     static Map<String, Object> 객실_부가정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("codeId", "A001-01");
@@ -72,8 +61,6 @@ public class AccommodationParams {
         return params;
     }
 
-    @Test
-    @DisplayName("숙박업체의 객실 요금 정보를 셋팅한다.")
     static Map<String, Object> 객실_요금_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("active", 1);
