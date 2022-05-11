@@ -1,8 +1,8 @@
 package com.expedia.authentication.support
 
 import com.google.common.base.CaseFormat
-import org.springframework.beans.factory.InitializingBean
 import org.springframework.stereotype.Service
+import javax.annotation.PostConstruct
 import javax.persistence.Entity
 import javax.persistence.EntityManager
 import javax.persistence.PersistenceContext
@@ -11,11 +11,12 @@ import javax.transaction.Transactional
 @Service
 class DatabaseCleanup(
     @PersistenceContext val entityManager: EntityManager
-): InitializingBean {
+) {
 
     private var tableNames: List<String>? = null
 
-    override fun afterPropertiesSet() {
+    @PostConstruct
+    fun afterPropertiesSet() {
         tableNames = entityManager.metamodel.entities.asSequence()
             .filter { e -> e.javaType.getAnnotation(Entity::class.java) != null }
             .map { e -> CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, e.name) }
