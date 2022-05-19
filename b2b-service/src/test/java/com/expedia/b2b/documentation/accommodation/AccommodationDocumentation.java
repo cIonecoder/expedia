@@ -48,9 +48,9 @@ public class AccommodationDocumentation extends Documentation {
                 .given()
                     .log().all()
                 .accept(MediaType.APPLICATION_JSON_VALUE)
-                    .queryParam("accommodationId", 1L)
+                    .pathParam("accommodationId", 1L)
                 .when()
-                    .get("/accommodations")
+                    .get("/accommodation/{accommodationId}")
                 .then()
                     .log().all()
                 .extract();

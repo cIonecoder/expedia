@@ -12,7 +12,6 @@ import org.springframework.restdocs.RestDocumentationExtension;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(RestDocumentationExtension.class) // 스니펫 생성을 위한 선언
-@Import(DocumentationConfiguration.class)
 @AutoConfigureRestDocs
 public class Documentation {
     @LocalServerPort
