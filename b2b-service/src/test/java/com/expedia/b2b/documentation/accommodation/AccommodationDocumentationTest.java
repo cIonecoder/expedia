@@ -14,7 +14,6 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.response
 import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.document;
 
 public class AccommodationDocumentationTest {
-    @Test
     public static RestDocumentationFilter 숙박업체_생성_요청() {
         return document("accommodations",
                 getDocumentRequest(),
