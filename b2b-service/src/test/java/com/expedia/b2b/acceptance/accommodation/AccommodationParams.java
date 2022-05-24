@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class AccommodationParams {
-    static Map<String, Object> 숙박업체_정보_셋팅() {
+    public static Map<String, Object> 숙박업체_정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("accommodationName", "Shilla Stay Mapo");
         params.put("accommodationType", 10);
@@ -29,7 +29,7 @@ public final class AccommodationParams {
         return params;
     }
 
-    static Map<String, Object> 숙박업체_권한_정보_셋팅() {
+    public static Map<String, Object> 숙박업체_권한_정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("progStatusCd", 10);
         params.put("stoppedDts", "");
@@ -40,7 +40,7 @@ public final class AccommodationParams {
         return params;
     }
 
-    static Map<String, Object> 객실_정보_셋팅() {
+    public static Map<String, Object> 객실_정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("roomType", "VIP");
         params.put("roomName", "VIP룸");
@@ -51,7 +51,7 @@ public final class AccommodationParams {
         return params;
     }
 
-    static Map<String, Object> 객실_부가정보_셋팅() {
+    public static Map<String, Object> 객실_부가정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("codeId", "A001-01");
         params.put("active", 1);
@@ -61,7 +61,7 @@ public final class AccommodationParams {
         return params;
     }
 
-    static Map<String, Object> 객실_요금_셋팅() {
+    public static Map<String, Object> 객실_요금_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("active", 1);
         params.put("feeName", "VIP룸 기본요금");
