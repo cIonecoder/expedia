@@ -1,6 +1,6 @@
 package com.expedia.authentication.interfaces.user
 
-import com.expedia.authentication.application.UserFacade
+import com.expedia.authentication.application.user.UserFacade
 import com.expedia.authentication.interfaces.user.dto.UserDto
 import com.expedia.authentication.interfaces.user.mapper.UserDtoMapper
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,7 +14,6 @@ import javax.validation.Valid
 class UserController(
     private val userFacade: UserFacade
 ) {
-
     @PostMapping("/register")
     fun register(
         @RequestBody @Valid request: UserDto.RegisterUserRequest
