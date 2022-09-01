@@ -12,9 +12,9 @@
 ## Micro Service Archtictures
 
 - __authentication-service__
-  - Kotlin, Spring Data JDBC
+  - Kotlin, Spring Data JPA
 - __authorization-service__
-  - Kotlin, Spring Data JDBC
+  - Kotlin, Spring Data JPA
 - __b2b-service__
   - Kotlin, Java, Spring Data JPA
 - __b2c-service__
@@ -22,4 +22,4 @@
 - __payment-service__ 
   - Kotlin, Java, Spring Data JPA
 - __booking-service__
-  - Kotlin, Spring Data JDBC
+  - Kotlin, Spring Data JPA
