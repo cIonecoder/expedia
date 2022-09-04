@@ -24,7 +24,7 @@ class UserAccount(
     val password: String,
 
     @Column
-    val externalId: String,
+    val externalId: String = "NONE",
 
     @Column
     val active: Boolean = true,

@@ -10,7 +10,6 @@ class UserDtoMapper {
             UserCommand.RegisterUser(
                 email = request.email,
                 password = request.password,
-                externalId = request.externalId
             )
     }
 }
