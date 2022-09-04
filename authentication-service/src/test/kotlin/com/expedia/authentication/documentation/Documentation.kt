@@ -3,6 +3,7 @@ package com.expedia.authentication.documentation
 import io.restassured.RestAssured
 import io.restassured.builder.RequestSpecBuilder
 import io.restassured.specification.RequestSpecification
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
@@ -21,6 +22,7 @@ internal class Documentation {
 
     protected lateinit var spec: RequestSpecification
 
+    @BeforeEach
     fun setUp(documentation: RestDocumentationContextProvider) {
         RestAssured.port = port.toInt()
         this.spec = RequestSpecBuilder()

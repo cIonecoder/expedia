@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 class UserStoreImpl(
     private val userAccountRepository: UserAccountRepository
 ): UserStore {
-    override fun register(user: UserAccount) {
-        userAccountRepository.save(user)
+    override fun register(userAccount: UserAccount) {
+        userAccountRepository.save(userAccount)
     }
 }
