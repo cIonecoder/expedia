@@ -1,16 +1,13 @@
-package com.expedia.b2b.application.service;
+package com.expedia.b2b.instructure.adapter;
 
+import com.expedia.b2b.application.adapter.AccommodationService;
 import com.expedia.b2b.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class AccommodationService {
+public class AccommodationServiceImpl implements AccommodationService {
     private final AccommodationRepository accommodationRepository;
     private final AccommodationRoleRepository accommodationRoleRepository;
     private final AccommodationRoomRepository accommodationRoomRepository;
