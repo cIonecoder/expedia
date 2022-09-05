@@ -1,20 +1,20 @@
 package com.expedia.authentication.domain
 
+import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
 import org.springframework.data.annotation.CreatedBy
-import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedBy
-import org.springframework.data.annotation.LastModifiedDate
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 abstract class BaseEntity {
-    @CreatedDate
-    var createdAt: LocalDateTime = LocalDateTime.now()
+    @CreationTimestamp
+    var createdAt: ZonedDateTime = ZonedDateTime.now()
         private set
     @CreatedBy
     var createdBy: String = SYSTEM_PROPERTY_AUTHOR
         private set
-    @LastModifiedDate
-    var lastModifiedAt: LocalDateTime = LocalDateTime.now()
+    @UpdateTimestamp
+    var lastModifiedAt: ZonedDateTime = ZonedDateTime.now()
         private set
     @LastModifiedBy
     var lastModifiedBy: String = SYSTEM_PROPERTY_AUTHOR
