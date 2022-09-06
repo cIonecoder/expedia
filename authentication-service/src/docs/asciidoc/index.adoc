@@ -1,0 +1,16 @@
+= Subway Application API Document
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-curl-request-title: Example request
+:operation-http-response-title: Example response
+
+[[users]]
+== 회원
+
+=== 회원 등록
+
+operation::createUser[snippets='http-request,http-response,response-fields']
