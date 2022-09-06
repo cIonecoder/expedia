@@ -20,7 +20,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:2.6.6")
     implementation("org.springframework.boot:spring-boot-starter-actuator:2.6.6")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.6.6")
-    implementation("org.springframework.boot:spring-boot-starter-security:2.6.6")
+//    implementation("org.springframework.boot:spring-boot-starter-security:2.6.6")
     implementation("org.springframework.boot:spring-boot-starter-validation:2.6.6")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.10")
