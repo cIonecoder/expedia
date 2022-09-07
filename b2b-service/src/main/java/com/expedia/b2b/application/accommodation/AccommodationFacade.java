@@ -1,25 +1,21 @@
-package com.expedia.b2b.instructure.adapter;
+package com.expedia.b2b.application.accommodation;
 
-import com.expedia.b2b.application.adapter.AccommodationService;
 import com.expedia.b2b.domain.*;
+import com.expedia.b2b.domain.accommodation.AccommodationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AccommodationServiceImpl implements AccommodationService {
-    private final AccommodationRepository accommodationRepository;
-    private final AccommodationRoleRepository accommodationRoleRepository;
-    private final AccommodationRoomRepository accommodationRoomRepository;
-    private final AccommodationRoomInfoRepository accommodationRoomInfoRepository;
-    private final AccommodationRoomFeeRepository accommodationRoomFeeRepository;
+public class AccommodationFacade {
+    private final AccommodationService accommodationService;
 
     /**
      * 숙박 업체 저장
      * @param accommodation
      */
     public void saveAccommodation(Accommodation accommodation) {
-        accommodationRepository.save(accommodation);
+        accommodationService.saveAccommodation(accommodation);
     }
 
     /**
@@ -27,7 +23,7 @@ public class AccommodationServiceImpl implements AccommodationService {
      * @param accommodationRole
      */
     public void saveAccommodationRole(AccommodationRole accommodationRole) {
-        accommodationRoleRepository.save(accommodationRole);
+        accommodationService.saveAccommodationRole(accommodationRole);
     }
 
     /**
@@ -35,7 +31,7 @@ public class AccommodationServiceImpl implements AccommodationService {
      * @param accommodationRoom
      */
     public void saveAccommodationRoom(AccommodationRoom accommodationRoom) {
-        accommodationRoomRepository.save(accommodationRoom);
+        accommodationService.saveAccommodationRoom(accommodationRoom);
     }
 
     /**
@@ -43,7 +39,7 @@ public class AccommodationServiceImpl implements AccommodationService {
      * @param accommodationRoomInfo
      */
     public void saveAccommodationRoomInfo(AccommodationRoomInfo accommodationRoomInfo) {
-        accommodationRoomInfoRepository.save(accommodationRoomInfo);
+        accommodationService.saveAccommodationRoomInfo(accommodationRoomInfo);
     }
 
     /**
@@ -51,6 +47,6 @@ public class AccommodationServiceImpl implements AccommodationService {
      * @param accommodationRoomFee
      */
     public void saveAccommodationRoomFee(AccommodationRoomFee accommodationRoomFee) {
-        accommodationRoomFeeRepository.save(accommodationRoomFee);
+        accommodationService.saveAccommodationRoomFee(accommodationRoomFee);
     }
 }

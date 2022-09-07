@@ -1,8 +1,7 @@
 package com.expedia.b2b.presentation.controller;
 
-import com.expedia.b2b.application.adapter.AccommodationService;
 import com.expedia.b2b.application.dto.RequestSaveAccommodationDto;
-import com.expedia.b2b.instructure.adapter.AccommodationServiceImpl;
+import com.expedia.b2b.domain.accommodation.AccommodationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

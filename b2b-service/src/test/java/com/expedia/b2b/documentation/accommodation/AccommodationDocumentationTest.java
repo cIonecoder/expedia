@@ -15,7 +15,7 @@ import static org.springframework.restdocs.restassured3.RestAssuredRestDocumenta
 
 public class AccommodationDocumentationTest {
     public static RestDocumentationFilter 숙박업체_생성_요청() {
-        return document("accommodations",
+        return document("post-accommodations",
                 getDocumentRequest(),
                 getDocumentResponse(),
                 requestHeaders(
