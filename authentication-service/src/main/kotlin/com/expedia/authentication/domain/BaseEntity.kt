@@ -17,13 +17,11 @@ abstract class BaseEntity {
         private set
     @CreatedBy
     var createdBy: String = SYSTEM_PROPERTY_AUTHOR
-        private set
     @UpdateTimestamp
     var lastModifiedAt: ZonedDateTime = ZonedDateTime.now()
         private set
     @LastModifiedBy
     var lastModifiedBy: String = SYSTEM_PROPERTY_AUTHOR
-        private set
 }
 
 private const val SYSTEM_PROPERTY_AUTHOR = "system"

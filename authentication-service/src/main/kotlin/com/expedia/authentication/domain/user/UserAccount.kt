@@ -18,12 +18,6 @@ class UserAccount(
     val id: Long? = null,
 
     @Column
-    val email: String,
-
-    @Column
-    val password: String,
-
-    @Column
     val externalId: String = "NONE",
 
     @Column
@@ -32,4 +26,17 @@ class UserAccount(
     @OneToOne(mappedBy = "userAccount", fetch = FetchType.LAZY)
     val userInfo: UserInfo? = null
 ): BaseEntity() {
+
+    @Column
+    private var email: String = ""
+
+    @Column
+    private var password: String = ""
+
+    constructor(email: String, password: String): this() {
+        this.email = email
+        this.password = password
+        this.createdBy = email
+        this.lastModifiedBy = email
+    }
 }

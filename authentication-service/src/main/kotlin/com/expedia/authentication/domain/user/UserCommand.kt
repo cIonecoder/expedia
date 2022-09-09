@@ -8,7 +8,7 @@ class UserCommand {
     ) {
         fun toEntity() = UserAccount(
             email = email,
-            password = password,
+            password = password
         )
     }
 }

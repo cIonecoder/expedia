@@ -1,10 +1,12 @@
 package com.expedia.authentication.interfaces.validator
 
+import org.springframework.stereotype.Component
 import java.text.MessageFormat
 import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext
 
 
+@Component
 class PasswordValidator: ConstraintValidator<Password, String> {
 
     companion object {
