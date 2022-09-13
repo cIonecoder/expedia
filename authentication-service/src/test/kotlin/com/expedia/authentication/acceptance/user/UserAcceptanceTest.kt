@@ -8,7 +8,7 @@ import org.springframework.boot.web.server.LocalServerPort
 
 
 internal class UserAcceptanceTest(
-    private val databaseCleanup: DatabaseCleanup,
+    databaseCleanup: DatabaseCleanup,
     @LocalServerPort private val port: Int
 ): AcceptanceTest(databaseCleanup, port) {
     init {
