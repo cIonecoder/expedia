@@ -1,7 +1,7 @@
 package com.expedia.authentication.documentation.user
 
 import com.expedia.authentication.documentation.Documentation
-import com.expedia.authentication.payload.createUserPayloads
+import com.expedia.authentication.payload.userRegisterSuccessPayloads
 import io.restassured.RestAssured
 import io.restassured.response.ExtractableResponse
 import io.restassured.response.Response
@@ -25,10 +25,10 @@ internal fun `회원 생성 요청`(spec: RequestSpecification): ExtractableResp
         .given(spec).log().all()
         .filter(DocumentationFilter.`회원 생성`())
         .contentType(MediaType.APPLICATION_JSON_VALUE)
-        .body(createUserPayloads())
+        .body(userRegisterSuccessPayloads())
         .`when`().post("/users")
         .then().log().all().extract()
 }
 
 internal fun `회원이 생성 됨`(response: ExtractableResponse<Response>) =
-    assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value())
+    assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())

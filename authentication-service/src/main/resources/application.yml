@@ -1,4 +1,29 @@
 spring:
+  profiles:
+    group:
+      local:
+        - common
+        - local
+      test:
+        - common
+        - test
+
+---
+spring:
+  config:
+    activate:
+      on-profile: common
+
+security:
+  jwt:
+    token:
+      secret-key: expedia-secret-key
+      expire-length: 3600000
+---
+spring:
+  config:
+    activate:
+      on-profile: local
   datasource:
     url: jdbc:mysql://localhost:3306/expedia_authentication
     username: root
@@ -10,9 +35,19 @@ spring:
         show_sql: true
         format_sql: true
         ddl-auto: validate
-
-security:
-  jwt:
-    token:
-      secret-key: expedia-secret-key
-      expire-length: 3600000
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: 'jdbc:h2:mem:authentication'
+    username: 'user'
+    password: ''
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        ddl-auto: validate

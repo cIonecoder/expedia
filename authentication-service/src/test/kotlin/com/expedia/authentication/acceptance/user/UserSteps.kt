@@ -19,7 +19,7 @@ internal fun `회원 생성 요청`(user: UserDto.RegisterUserRequest): Extracta
 }
 
 internal fun `회원 등록 성공`(response: ExtractableResponse<Response>) =
-    assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value())
+    assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
 
 internal fun `회원 등록 실패`(response: ExtractableResponse<Response>) =
-    assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value())
+    assertThat(response.statusCode()).isEqualTo(HttpStatus.BAD_REQUEST.value())
