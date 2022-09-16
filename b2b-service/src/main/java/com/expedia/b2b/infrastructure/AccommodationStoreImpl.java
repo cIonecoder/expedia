@@ -1,4 +1,4 @@
-package com.expedia.b2b.instructure;
+package com.expedia.b2b.infrastructure;
 
 import com.expedia.b2b.domain.*;
 import com.expedia.b2b.domain.accommodation.AccommodationStore;

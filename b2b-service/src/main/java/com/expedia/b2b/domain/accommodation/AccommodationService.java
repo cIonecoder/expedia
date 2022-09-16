@@ -1,7 +1,6 @@
 package com.expedia.b2b.domain.accommodation;
 
 import com.expedia.b2b.domain.*;
-import com.expedia.b2b.instructure.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
