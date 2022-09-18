@@ -71,6 +71,7 @@
     - hotfix: bug fix
     - docs: documentations
     - enhance: new feature or request
+    - discussion: Discussion
 - __Branch__
   - `feature/이슈번호`
   - 모든 작업한 feature 브랜치는 Merge 후에도 삭제하지 않는다.
