@@ -1,10 +1,11 @@
 # Expedia Clone Coding
 
-## Table of Contents
-
-- [MVP](https://github.com/cIonecoder/expedia/wiki/MVP)
-- [Rule](https://github.com/cIonecoder/expedia/issues/1)
-- [MSA](https://github.com/cIonecoder/expedia/issues/1)
+- __Table of Contents__
+  - [개발](https://github.com/cIonecoder/expedia#%EA%B0%9C%EB%B0%9C)
+  - [프로젝트 구조](https://github.com/cIonecoder/expedia#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%A1%B0)
+    - [패키지 구조](https://github.com/cIonecoder/expedia#%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B5%AC%EC%A1%B0)
+  - [VCS](https://github.com/cIonecoder/expedia#vcs)
+  - [Test](https://github.com/cIonecoder/expedia#test)
 
 ## 개발
 
@@ -86,16 +87,14 @@
     내용 작성
     ```
 
-## Tests
+## Test
 
-```
--> 시나리오를 기반으로 실패하는 인수테스트를 작성(fail-acceptance)
--> 문서화 테스트를 작성(documentation)
--> 실패하는 테스트 케이스 작성(fail-unittest)
--> 테스트 케이스를 통과시키기 위한 도메인 로직 작성 (production)
--> 테스트 케이스 성공 시키고(success-unittest)
--> 인수테스트를 성공 시키기(success-acceptance)
-```
+> 기본 틀은 아래와 같으며, 본인이 작업하기 편한 방향으로 진행 가능
 
-
+1. 시나리오를 기반으로 실패하는 인수테스트를 작성(fail-acceptance)
+2. 문서화 테스트를 작성(documentation)
+3. 실패하는 테스트 케이스 작성(fail-unittest)
+4. 테스트 케이스를 통과시키기 위한 도메인 로직 작성 (production)
+5. 테스트 케이스 성공 시키고(success-unittest)
+6. 인수테스트를 성공 시키기(success-acceptance)
 
