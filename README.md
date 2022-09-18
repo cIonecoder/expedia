@@ -29,3 +29,20 @@
 - STEP-1
   - 인증(JWT, Redis)
   - 숙박(상품, 주문)
+
+- platform
+  - authN
+  - authR
+  - payment
+  - message(gmail)
+  - ...
+- expedia
+  - booking-server (이름은 편한대로)
+  
+- 사용 기술
+  - 레디스 캐시
+  - 레디스 락
+  - kafka
+  - 로그 포맷
+  - 로그 ㅗ
+
