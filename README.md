@@ -23,3 +23,9 @@
   - Kotlin, Java, Spring Data JPA
 - __booking-service__
   - Kotlin, Spring Data JPA
+  
+## Plan
+
+- STEP-1
+  - 인증(JWT, Redis)
+  - 숙박(상품, 주문)
