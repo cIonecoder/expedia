@@ -11,25 +11,6 @@
 
 ## Micro Service Archtictures
 
-- __authentication-service__
-  - Kotlin, Spring Data JPA
-- __authorization-service__
-  - Kotlin, Spring Data JPA
-- __b2b-service__
-  - Kotlin, Java, Spring Data JPA
-- __b2c-service__
-  - Kotlin, Java, Spring Data JPA
-- __payment-service__ 
-  - Kotlin, Java, Spring Data JPA
-- __booking-service__
-  - Kotlin, Spring Data JPA
-  
-## Plan
-
-- STEP-1
-  - 인증(JWT, Redis)
-  - 숙박(상품, 주문)
-
 - platform
   - authN
   - authR
@@ -38,11 +19,14 @@
   - ...
 - expedia
   - booking-server (이름은 편한대로)
-  
+
+## Tech stack
+
 - 사용 기술
   - 레디스 캐시
   - 레디스 락
   - kafka
   - 로그 포맷
-  - 로그 ㅗ
+  - grpc
+ 
 
