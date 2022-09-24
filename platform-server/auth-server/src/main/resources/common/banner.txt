@@ -1,0 +1,9 @@
+             _    _   _______   _    _
+     /\     | |  | | |__   __| | |  | |
+    /  \    | |  | |    | |    | |__| |
+   / /\ \   | |  | |    | |    |  __  |
+  / ____ \  | |__| |    | |    | |  | |
+ /_/    \_\  \____/     |_|    |_|  |_|
+
+${AnsiColor.GREEN}:: SPRING BOOT :: ${AnsiColor.DEFAULT}${spring-boot.version}
+${AnsiColor.GREEN}:: DATABASE    :: ${AnsiColor.DEFAULT}${spring.datasource.url} (${spring.jpa.hibernate.ddl-auto})
