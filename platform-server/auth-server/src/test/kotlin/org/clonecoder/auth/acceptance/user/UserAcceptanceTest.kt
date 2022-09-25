@@ -5,6 +5,7 @@ import org.clonecoder.auth.payload.userRegisterFailPayloads
 import org.clonecoder.auth.payload.userRegisterSuccessPayloads
 import org.clonecoder.auth.support.DatabaseCleanup
 import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.security.test.context.support.WithAnonymousUser
 
 
 internal class UserAcceptanceTest(

@@ -5,7 +5,6 @@ import java.text.MessageFormat
 import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext
 
-
 @Component
 class PasswordValidator: ConstraintValidator<Password, String> {
 
@@ -13,7 +12,6 @@ class PasswordValidator: ConstraintValidator<Password, String> {
         private const val MIN_SIZE = 12
         private const val MAX_SIZE = 20
         private const val pattern = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@!%*#?&])[A-Za-z0-9$@!%*#?&]{$MIN_SIZE,$MAX_SIZE}$"
-
     }
 
     override fun isValid(value: String, context: ConstraintValidatorContext): Boolean {

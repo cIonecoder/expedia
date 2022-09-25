@@ -7,6 +7,7 @@ import io.restassured.response.Response
 import org.assertj.core.api.Assertions.assertThat
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.anonymous
 
 
 internal fun `회원 생성 요청`(user: UserDto.RegisterUserRequest): ExtractableResponse<Response> {
