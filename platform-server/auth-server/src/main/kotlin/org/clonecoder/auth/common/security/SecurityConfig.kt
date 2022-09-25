@@ -26,17 +26,14 @@ class SecurityConfig {
 
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
-        http.cors().and().authorizeRequests()
+        http.csrf().disable()
+            .httpBasic().disable()
+            .authorizeRequests()
             .antMatchers(HttpMethod.DELETE).hasRole(SecurityRole.ADMIN.name)
             .antMatchers(HttpMethod.PUT).hasRole(SecurityRole.ADMIN.name)
             .antMatchers(HttpMethod.PATCH).hasRole(SecurityRole.ADMIN.name)
             .antMatchers(HttpMethod.POST,"/users").permitAll()
             .anyRequest().authenticated()
-
-//        http.exceptionHandling()
-//            .accessDeniedHandler { request, response, accessDeniedException ->
-//                log.info("Denied to access $request.requestURI, response: $response")
-//            }
 
         return http.build()
     }
