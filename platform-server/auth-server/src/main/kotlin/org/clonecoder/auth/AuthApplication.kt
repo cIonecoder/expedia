@@ -1,8 +1,10 @@
 package org.clonecoder.auth
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 
+@ConfigurationPropertiesScan("org.clonecoder.auth.common.properties")
 @SpringBootApplication
 class AuthApplication
 
