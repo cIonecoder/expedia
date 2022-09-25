@@ -1,10 +1,10 @@
-package com.expedia.b2b;
+package org.clonecoder.bookingserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class B2bApplicationTests {
+class BookingServerApplicationTests {
 
     @Test
     void contextLoads() {
