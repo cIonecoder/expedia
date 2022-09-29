@@ -1,6 +1,5 @@
 package org.clonecoder.auth.domain.user
 
-import org.clonecoder.auth.common.exception.DuplicatedEmailException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -18,7 +17,7 @@ class UserService(
 
     private fun checkEmailDuplication(email: String) {
         when (userReader.existsByEmail(email)) {
-            true -> throw DuplicatedEmailException()
+            true -> throw org.clonecoder.auth.common.exception.DuplicatedEmailException()
             false -> return
         }
     }

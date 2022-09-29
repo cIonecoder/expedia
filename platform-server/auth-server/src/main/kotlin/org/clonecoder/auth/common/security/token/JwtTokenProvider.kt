@@ -2,14 +2,13 @@ package org.clonecoder.auth.common.security.token
 
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
-import org.clonecoder.auth.common.properties.JwtProperties
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.util.Date
 
 @Component
 class JwtTokenProvider(
-    private val jwtProperties: JwtProperties
+    private val jwtProperties: org.clonecoder.auth.common.properties.JwtProperties
 ) {
 
     private val log = LoggerFactory.getLogger(this::class.java)

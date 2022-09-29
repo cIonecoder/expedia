@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConstructorBinding
 @ConfigurationProperties(prefix = "security.jwt")
 data class JwtProperties(
-    val token: TokenProperties
+    val token: org.clonecoder.auth.common.properties.JwtProperties.TokenProperties
 ) {
 
     @ConstructorBinding

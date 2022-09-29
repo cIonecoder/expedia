@@ -29,9 +29,9 @@ class SecurityConfig {
         http.csrf().disable()
             .httpBasic().disable()
             .authorizeRequests()
-            .antMatchers(HttpMethod.DELETE).hasRole(SecurityRole.ADMIN.name)
-            .antMatchers(HttpMethod.PUT).hasRole(SecurityRole.ADMIN.name)
-            .antMatchers(HttpMethod.PATCH).hasRole(SecurityRole.ADMIN.name)
+            .antMatchers(HttpMethod.DELETE).hasRole(org.clonecoder.auth.common.security.SecurityRole.ADMIN.name)
+            .antMatchers(HttpMethod.PUT).hasRole(org.clonecoder.auth.common.security.SecurityRole.ADMIN.name)
+            .antMatchers(HttpMethod.PATCH).hasRole(org.clonecoder.auth.common.security.SecurityRole.ADMIN.name)
             .antMatchers(HttpMethod.POST,"/users").permitAll()
             .anyRequest().authenticated()
 

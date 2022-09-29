@@ -11,7 +11,7 @@ spring:
         - common
         - test
 server:
-  port: 8081
+  port: 8082
 ---
 spring:
   config:

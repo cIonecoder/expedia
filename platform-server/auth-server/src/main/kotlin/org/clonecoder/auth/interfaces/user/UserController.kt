@@ -1,6 +1,5 @@
 package org.clonecoder.auth.interfaces.user
 
-import org.clonecoder.auth.application.user.UserFacade
 import org.clonecoder.auth.interfaces.user.dto.UserDto
 import org.clonecoder.auth.interfaces.user.mapper.UserDtoMapper
 import org.springframework.web.bind.annotation.PostMapping
@@ -10,7 +9,7 @@ import javax.validation.Valid
 
 @RestController
 class UserController(
-    private val userFacade: UserFacade
+    private val userFacade: org.clonecoder.auth.application.user.UserFacade
 ) {
     @PostMapping("/users")
     fun register(
