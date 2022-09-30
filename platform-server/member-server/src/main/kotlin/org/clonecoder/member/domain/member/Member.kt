@@ -10,9 +10,9 @@ import javax.persistence.Id
 import javax.persistence.OneToOne
 import javax.persistence.Table
 
-@Table(name = "member_account")
+@Table(name = "member")
 @Entity
-class MemberAccount(
+class Member(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -23,15 +23,15 @@ class MemberAccount(
     @Column
     val active: Boolean = true,
 
-    @OneToOne(mappedBy = "memberAccount", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "member", fetch = FetchType.LAZY)
     val memberInfo: MemberInfo? = null
 ): BaseEntity() {
 
     @Column
-    private var email: String = ""
+    internal var email: String = ""
 
     @Column
-    private var password: String = ""
+    internal var password: String = ""
 
     constructor(email: String, password: String): this() {
         this.email = email

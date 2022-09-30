@@ -1,8 +1,8 @@
 package org.clonecoder.member.infrastructure.member
 
-import org.clonecoder.member.domain.member.MemberAccount
+import org.clonecoder.member.domain.member.Member
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface MemberAccountRepository: JpaRepository<MemberAccount, Long> {
+interface MemberRepository: JpaRepository<Member, Long> {
     fun existsByEmail(email: String): Boolean
 }

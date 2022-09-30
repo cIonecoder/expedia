@@ -22,7 +22,7 @@ class MemberInfo(
 
     @JoinColumn(name = "account_id")
     @OneToOne(fetch = FetchType.LAZY)
-    val memberAccount: MemberAccount,
+    val member: Member,
 
     @Column
     val lastName: String,

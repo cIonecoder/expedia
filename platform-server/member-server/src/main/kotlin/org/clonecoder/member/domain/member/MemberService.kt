@@ -1,5 +1,6 @@
 package org.clonecoder.member.domain.member
 
+import org.clonecoder.member.common.exception.DuplicatedEmailException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -9,16 +10,20 @@ class MemberService(
     private val memberReader: MemberReader,
 ) {
     @Transactional
-    fun register(member: MemberCommand.RegisterMember) {
-        val memberAccount = member.toEntity()
+    fun register(registerMember: MemberCommand.RegisterMember) {
+        val member = registerMember.toEntity()
         checkEmailDuplication(member.email)
-        memberStore.register(memberAccount)
+        memberStore.register(member)
     }
 
     private fun checkEmailDuplication(email: String) {
         when (memberReader.existsByEmail(email)) {
-            true -> throw org.clonecoder.member.common.exception.DuplicatedEmailException()
+            true -> throw DuplicatedEmailException()
             false -> return
         }
+    }
+
+    fun existsByEmailAndPassword(email: String, password: String): Boolean {
+        return memberReader.existsByEmailAndPassword(email = email, password = password)
     }
 }

@@ -22,7 +22,8 @@ security:
   jwt:
     token:
       secret-key: expedia-secret-key
-      expire-length: 3600000
+      access-token-expire-length: 3600
+      refresh-token-expire-length: 360000
 ---
 spring:
   config:

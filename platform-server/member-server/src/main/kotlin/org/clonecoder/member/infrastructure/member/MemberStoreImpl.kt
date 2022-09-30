@@ -1,14 +1,15 @@
 package org.clonecoder.member.infrastructure.member
 
-import org.clonecoder.member.domain.member.MemberAccount
+import org.clonecoder.member.domain.member.Member
 import org.clonecoder.member.domain.member.MemberStore
 import org.springframework.stereotype.Component
 
 @Component
 class MemberStoreImpl(
-    private val memberAccountRepository: MemberAccountRepository
+    private val memberRepository: MemberRepository
 ): MemberStore {
-    override fun register(memberAccount: MemberAccount) {
-        memberAccountRepository.save(memberAccount)
+    override fun register(member: Member) {
+        memberRepository.save(member)
     }
+
 }

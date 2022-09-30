@@ -6,7 +6,7 @@ class MemberCommand {
         val email: String,
         val password: String,
     ) {
-        fun toEntity() = MemberAccount(
+        fun toEntity() = Member(
             email = email,
             password = password
         )

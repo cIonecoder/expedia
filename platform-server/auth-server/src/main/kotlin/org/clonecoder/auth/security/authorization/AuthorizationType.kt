@@ -1,4 +1,4 @@
-package org.clonecoder.auth.common.security.authorization
+package org.clonecoder.auth.security.authorization
 
 
 enum class AuthorizationType {

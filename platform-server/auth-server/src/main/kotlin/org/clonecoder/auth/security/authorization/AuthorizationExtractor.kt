@@ -1,4 +1,4 @@
-package org.clonecoder.auth.common.security.authorization
+package org.clonecoder.auth.security.authorization
 
 import org.apache.logging.log4j.util.Strings
 import java.util.Locale
@@ -14,15 +14,19 @@ object AuthorizationExtractor {
         val typeToLowerCase: String = type.toLowerCase()
         val typeLength = typeToLowerCase.length
         val headers = request.getHeaders(AUTHORIZATION)
+
         while (headers.hasMoreElements()) {
             val value = headers.nextElement()
+
             if (value.lowercase(Locale.getDefault()).startsWith(typeToLowerCase)) {
                 var authHeaderValue = value.substring(typeLength).trim { it <= ' ' }
                 request.setAttribute(ACCESS_TOKEN_TYPE, value.substring(0, typeLength).trim { it <= ' ' })
+
                 val commaIndex = authHeaderValue.indexOf(',')
                 if (commaIndex > 0) {
                     authHeaderValue = authHeaderValue.substring(0, commaIndex)
                 }
+
                 return authHeaderValue
             }
         }

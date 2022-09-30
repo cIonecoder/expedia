@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component
 
 @Component
 class MemberReaderImpl(
-    private val memberAccountRepository: MemberAccountRepository
+    private val memberRepository: MemberRepository
 ): MemberReader {
     override fun existsByEmail(email: String): Boolean {
-        return memberAccountRepository.existsByEmail(email)
+        return memberRepository.existsByEmail(email)
     }
 }
