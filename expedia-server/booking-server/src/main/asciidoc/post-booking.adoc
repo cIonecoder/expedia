@@ -1,0 +1,24 @@
+= API : 예약 등록
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[overview-request-dto]]
+=== Reuqest Header
+operation::post-booking[snippets='request-headers']
+
+=== Request
+operation::post-booking[snippets='path-parameters']
+
+=== Request Example
+operation::post-booking[snippets='http-request']
+
+[[overview-response-dto]]
+=== Response
+operation::post-booking[snippets='response-fields']
+
+=== Response Example
+operation::post-booking[snippets='response-body']
