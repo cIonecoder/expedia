@@ -3,6 +3,7 @@ package org.clonecoder.bookingserver.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.clonecoder.bookingserver.common.enums.EnumGuestType;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -21,8 +22,9 @@ public class BookingGuests {
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
-    private Long guestUserId;
-    private String guestType;
+    @Enumerated(EnumType.STRING)
+    private EnumGuestType guestType;
+
     private String guestLastName;
     private String guestFirstName;
     private String guestHpno;

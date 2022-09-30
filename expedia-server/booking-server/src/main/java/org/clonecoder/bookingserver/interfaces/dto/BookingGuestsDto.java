@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.clonecoder.bookingserver.common.enums.EnumGuestType;
 import org.clonecoder.bookingserver.domain.Booking;
 
 import javax.persistence.FetchType;
@@ -18,9 +19,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BookingGuestsDto {
     private Long id;
-    private Long booking_id;
-    private Long guestUserId;
-    private String guestType;
+    private Long bookingId;
+    private EnumGuestType enumGuestType;
     private String guestLastName;
     private String guestFirstName;
     private String guestHpno;

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.clonecoder.bookingserver.common.enums.EnumOrderState;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class BookingDto {
     private LocalDateTime checkinStartDateTime;
     private LocalDateTime checkinEndDateTime;
     private BigDecimal bookingTotalFee;
-    private String bookingStat;
+    private EnumOrderState enumOrderState;
     private String lastModifiedBy;
     private LocalDateTime lastModified;
     private String createdBy;

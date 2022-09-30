@@ -6,6 +6,8 @@ import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingStore;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BookingStoreImpl implements BookingStore {
@@ -14,17 +16,18 @@ public class BookingStoreImpl implements BookingStore {
 
     /**
      * 숙박 업체 저장
+     *
      * @param booking
      */
-    public void saveBooking(Booking booking) {
-        bookingRepository.save(booking);
+    public Booking saveBooking(Booking booking) {
+        return bookingRepository.save(booking);
     }
 
     /**
      * 숙박업체 권한 정보 저장
      * @param bookingGuests
      */
-    public void saveBookingGuests(BookingGuests bookingGuests) {
-        bookingGuestsRepository.save(bookingGuests);
+    public void saveBookingGuests(List<BookingGuests> bookingGuests) {
+        bookingGuestsRepository.saveAll(bookingGuests);
     }
 }
