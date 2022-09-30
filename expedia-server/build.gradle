@@ -29,9 +29,14 @@ subprojects {
     }
 
     dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'org.springframework.boot:spring-boot-starter'
         compileOnly 'org.projectlombok:lombok'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+        runtimeOnly 'org.postgresql:postgresql'
+        runtimeOnly 'com.h2database:h2'
 
         // rest docs
         asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.6.RELEASE'
@@ -80,4 +85,8 @@ subprojects {
         from file("build/docs/asciidoc")
         into file("src/main/resources/static/docs")
     }
+}
+
+repositories {
+    mavenCentral()
 }
