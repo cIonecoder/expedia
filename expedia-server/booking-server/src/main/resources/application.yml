@@ -1,1 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/expediadb
+    username: expedia
+    password: 1234
+    driver-class-name: org.postgresql.Driver
 
+  # JPA
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
