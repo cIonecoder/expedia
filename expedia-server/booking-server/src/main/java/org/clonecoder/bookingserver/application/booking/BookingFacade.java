@@ -5,14 +5,11 @@ import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingCommand;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
-import org.clonecoder.bookingserver.interfaces.dto.BookingGuestsDto;
 import org.clonecoder.bookingserver.interfaces.dto.RequestSaveBookingDto;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
