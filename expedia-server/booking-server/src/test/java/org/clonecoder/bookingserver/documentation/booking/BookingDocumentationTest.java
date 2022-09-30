@@ -1,4 +1,4 @@
-package org.clonecoder.bookingserver.documentation.accommodation;
+package org.clonecoder.bookingserver.documentation.booking;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.restdocs.restassured3.RestDocumentationFilter;

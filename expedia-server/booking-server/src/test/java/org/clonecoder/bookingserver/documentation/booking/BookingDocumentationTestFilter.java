@@ -1,4 +1,4 @@
-package org.clonecoder.bookingserver.documentation.accommodation;
+package org.clonecoder.bookingserver.documentation.booking;
 
 import io.restassured.RestAssured;
 import org.clonecoder.bookingserver.documentation.Documentation;
