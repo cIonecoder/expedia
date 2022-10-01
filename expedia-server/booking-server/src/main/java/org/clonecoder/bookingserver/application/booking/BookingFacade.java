@@ -2,10 +2,10 @@ package org.clonecoder.bookingserver.application.booking;
 
 import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.domain.Booking;
-import org.clonecoder.bookingserver.domain.BookingCommand;
+import org.clonecoder.bookingserver.domain.command.BookingCommand;
 import org.clonecoder.bookingserver.domain.BookingGuests;
+import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
-import org.clonecoder.bookingserver.interfaces.dto.RequestSaveBookingDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,20 +15,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingFacade {
     private final BookingService bookingService;
-    private final BookingCommand bookingCommand;
 
     /**
      * 예약 저장
-     * @param requestSaveBookingDto
+     * @param bookingCommand
+     * @param bookingGuestsCommandList
+     * @return
      */
-    public Long saveBooking(RequestSaveBookingDto requestSaveBookingDto) {
-        Booking booking = bookingCommand.toBookingEntity(requestSaveBookingDto.getBooking());
+    public Long saveBooking(BookingCommand bookingCommand, List<BookingGuestsCommand> bookingGuestsCommandList) {
+        /* booking 저장 */
+        Booking booking = bookingCommand.toEntity();
+
         Long bookingId = bookingService.saveBooking(booking).getId();
 
+        /* booking guests List 저장 */
         List<BookingGuests> bookingGuestsList = new ArrayList<>();
-        requestSaveBookingDto.getBookingGuests().forEach(bookingGuestsDto -> {
-            bookingGuestsDto.setBookingId(bookingId);
-            bookingGuestsList.add(bookingCommand.toBookingGuestsEntity(bookingGuestsDto));
+        bookingGuestsCommandList.forEach(bookingGuestsCommand -> {
+            bookingGuestsList.add(bookingGuestsCommand.toEntity(bookingId));
         });
 
         bookingService.saveBookingGuests(bookingGuestsList);
