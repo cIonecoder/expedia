@@ -30,6 +30,7 @@ class SecurityConfig {
         http.csrf().disable()
             .httpBasic().disable()
             .authorizeRequests()
+            .antMatchers("/h2-console").permitAll()
             .antMatchers("/auth/**").permitAll()
             .anyRequest().authenticated()
 

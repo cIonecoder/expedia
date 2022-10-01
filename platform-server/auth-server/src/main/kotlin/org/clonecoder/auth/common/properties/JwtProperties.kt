@@ -12,7 +12,7 @@ data class JwtProperties(
     @ConstructorBinding
     data class TokenProperties(
         val secretKey: String,
-        val accessTokenExpireLength: Long,
-        val refreshTokenExpireLength: Long
+        val accessTokenExpireTime: Long,
+        val refreshTokenExpireTime: Long
     )
 }

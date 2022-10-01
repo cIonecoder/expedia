@@ -30,6 +30,7 @@ class Member(
     @Column
     internal var email: String = ""
 
+    // TODO password 암호화 처리 필요
     @Column
     internal var password: String = ""
 

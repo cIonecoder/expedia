@@ -2,6 +2,7 @@ package org.clonecoder.auth.application
 
 import org.clonecoder.auth.security.token.JwtTokenProvider
 import org.clonecoder.auth.security.token.TokenCommand
+import org.clonecoder.auth.security.token.TokenIssueSpec
 import org.clonecoder.auth.security.token.TokenResponse
 import org.clonecoder.member.application.member.MemberFacade
 import org.clonecoder.member.common.exception.NotExistMemberException
@@ -19,7 +20,9 @@ class TokenFacade(
     fun issueTokens(request: TokenCommand.IssueRequest): TokenResponse {
         return when (memberFacade.existsMember(email = request.email, password = request.password)) {
             false -> throw NotExistMemberException()
-            true -> tokenProvider.issueTokens(request)
+            true -> tokenProvider.issueTokens(
+                TokenIssueSpec(email = request.email)
+            )
         }
     }
 }

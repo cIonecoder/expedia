@@ -10,4 +10,8 @@ class MemberReaderImpl(
     override fun existsByEmail(email: String): Boolean {
         return memberRepository.existsByEmail(email)
     }
+
+    override fun existsByEmailAndPassword(email: String, password: String): Boolean {
+        return memberRepository.existsByEmailAndPassword(email, password)
+    }
 }

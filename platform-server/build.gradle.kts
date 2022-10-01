@@ -9,6 +9,7 @@ plugins {
 
 java.sourceCompatibility = JavaVersion.VERSION_11
 tasks.jar { enabled = false }
+tasks.bootJar { enabled = false }
 
 allprojects {
     group = "org.clonecoder"
