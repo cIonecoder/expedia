@@ -74,6 +74,7 @@ class RedisClient private constructor(
 
         try {
             val convertedValue = objectMapper.writeValueAsString(value)
+            log.info("# RedisClient cache value: $convertedValue")
             bucket.set(convertedValue, expireTime, timeUnit)
         } catch (e: Exception) {
             log.error("# RedisClient set error: $e")

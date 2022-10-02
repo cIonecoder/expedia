@@ -17,12 +17,16 @@ class TokenFacade(
 
     private val log = LoggerFactory.getLogger(this.javaClass)
 
+    // TODO Docker 로 mysql or postgresql 연결 성공시켜야함 ...
     fun issueTokens(request: TokenCommand.IssueRequest): TokenResponse {
-        return when (memberFacade.existsMember(email = request.email, password = request.password)) {
-            false -> throw NotExistMemberException()
-            true -> tokenProvider.issueTokens(
-                TokenIssueSpec(email = request.email)
-            )
-        }
+//        return when (memberFacade.existsMember(email = request.email, password = request.password)) {
+//            false -> throw NotExistMemberException()
+//            true -> tokenProvider.issueTokens(
+//                TokenIssueSpec(email = request.email)
+//            )
+//        }
+        return tokenProvider.issueTokens(
+            TokenIssueSpec(email = request.email)
+        )
     }
 }
