@@ -105,10 +105,10 @@ class BookingServiceTest {
         Booking booking = new Booking(bookingDto);
         Booking resultBooking = bookingService.saveBooking(booking);
 
-        Optional<Booking> byId = bookingRepository.findById(resultBooking.getId());
+        Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
 
         // then  : 원하는 예약이 생성됨
-        assertThat(resultBooking.getBookingNo()).isEqualTo(byId.get().getBookingNo());
+        assertThat(resultBooking.getBookingNo()).isEqualTo(findBooking.get().getBookingNo());
     }
 
     @Test
@@ -130,20 +130,21 @@ class BookingServiceTest {
 
         bookingService.saveBookingGuests(bookingGuestsList);
 
-        Optional<Booking> byId = bookingRepository.findById(resultBooking.getId());
-        List<BookingGuests> byGuests = bookingGuestsRepository.findAll();
+        // then
+        Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
+        List<BookingGuests> findBookingGuests = bookingGuestsRepository.findAll();
 
-        // then  : 원하는 예약이 생성됨
-        assertThat(byId.get().getId()).isEqualTo(byGuests.get(0).getBooking().getId());
+        // 1) 원하는 예약이 생성됨
+        assertThat(findBooking.get().getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
 
-        //       : 예약한 게스트 수가 일치해야함
-        assertThat(byGuests.size()).isEqualTo(requestSaveBookingDto.getBookingGuestsDto().size());
+        // 2) 예약한 게스트 수가 일치해야함
+        assertThat(findBookingGuests.size()).isEqualTo(requestSaveBookingDto.getBookingGuestsDto().size());
 
-        //       : 게스트별 요금의 총 요금과 예약의 총 요금이 동일해야함
-        BigDecimal totalFee = byGuests.stream()
+        // 3) 게스트별 요금의 총 요금과 예약의 총 요금이 동일해야함
+        BigDecimal totalFee = findBookingGuests.stream()
                     .map(BookingGuests::getGuestFee)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
-        assertThat(byId.get().getBookingTotalFee()).isEqualTo(totalFee);
+        assertThat(findBooking.get().getBookingTotalFee()).isEqualTo(totalFee);
 
     }
 }
