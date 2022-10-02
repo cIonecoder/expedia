@@ -30,7 +30,6 @@ public final class BookingParams {
 
         Map<String, Object> adult1 = new HashMap<>();
         adult1.put("bookingId", 1);
-        adult1.put("guestUserId", 2);
         adult1.put("guestType", "ADULT");
         adult1.put("guestLastName", "KIM");
         adult1.put("guestFirstName", "SEOHAEM");
@@ -45,7 +44,6 @@ public final class BookingParams {
 
         Map<String, Object> adult2 = new HashMap<>();
         adult2.put("bookingId", 1);
-        adult2.put("guestUserId", 2);
         adult2.put("guestType", "ADULT");
         adult2.put("guestLastName", "KIM");
         adult2.put("guestFirstName", "SEOHAEM");
@@ -60,7 +58,6 @@ public final class BookingParams {
 
         Map<String, Object> idol1 = new HashMap<>();
         idol1.put("bookingId", 1);
-        idol1.put("guestUserId", 3);
         idol1.put("guestType", "IDOL");
         idol1.put("guestLastName", "KIM");
         idol1.put("guestFirstName", "IDOL");
