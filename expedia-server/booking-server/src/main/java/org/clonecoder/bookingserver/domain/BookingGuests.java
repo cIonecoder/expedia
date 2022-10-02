@@ -63,11 +63,9 @@ public class BookingGuests {
 
     /**
      * booking setting
-     *
-     * @param bookingGuests
      * @param booking
      */
-    public void settingBooking(BookingGuests bookingGuests, Booking booking) {
-        bookingGuests.setBooking(booking);
+    public void settingBooking(Booking booking) {
+        this.setBooking(booking);
     }
 }

@@ -3,6 +3,7 @@ package org.clonecoder.bookingserver.unit.domain.booking;
 import org.clonecoder.bookingserver.common.enums.EnumGuestType;
 import org.clonecoder.bookingserver.common.enums.EnumOrderState;
 import org.clonecoder.bookingserver.domain.Booking;
+import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
 import org.clonecoder.bookingserver.domain.booking.BookingStore;
 import org.clonecoder.bookingserver.infrastructure.BookingGuestsRepository;
@@ -16,27 +17,29 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+@Transactional
 class BookingServiceTest {
-    @InjectMocks
+    @Autowired
     private BookingService bookingService;
 
-    @Mock
-    private BookingStore bookingStore;
-
-    @Mock
+    @Autowired
     private BookingRepository bookingRepository;
 
-    @Mock
+    @Autowired
     private BookingGuestsRepository bookingGuestsRepository;
 
     private RequestSaveBookingDto requestSaveBookingDto;
@@ -62,7 +65,6 @@ class BookingServiceTest {
         bookingDto.setCreatedBy("test@naver.com");
 
         BookingGuestsDto guest1 = new BookingGuestsDto();
-        guest1.setBookingId(1L);
         guest1.setEnumGuestType(EnumGuestType.ADULT);
         guest1.setGuestLastName("KIM");
         guest1.setGuestFirstName("SEOHAEM");
@@ -76,7 +78,6 @@ class BookingServiceTest {
         bookingGuestsDtoList.add(guest1);
 
         BookingGuestsDto guest2 = new BookingGuestsDto();
-        guest2.setBookingId(1L);
         guest2.setEnumGuestType(EnumGuestType.ADULT);
         guest2.setGuestLastName("LEE");
         guest2.setGuestFirstName("SEOHAEM");
@@ -98,16 +99,51 @@ class BookingServiceTest {
     @Test
     void 예약_생성() {
         // given : 예약 정보를 셋팅
+        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
 
         // when  : 예약 정보를 기반으로 생성 요청
+        Booking booking = new Booking(bookingDto);
+        Booking resultBooking = bookingService.saveBooking(booking);
+
+        Optional<Booking> byId = bookingRepository.findById(resultBooking.getId());
 
         // then  : 원하는 예약이 생성됨
+        assertThat(resultBooking.getBookingNo()).isEqualTo(byId.get().getBookingNo());
     }
 
     @Test
     void 예약_게스트_생성() {
+        // given : 예약 게스트 정보를 셋팅
+        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
+        List<BookingGuestsDto> bookingGuestsDtoList = requestSaveBookingDto.getBookingGuestsDto();
+
+        // when  : 예약 게스트 정보를 기반으로 생성 요청
+        Booking booking = new Booking(bookingDto);
+        Booking resultBooking = bookingService.saveBooking(booking);
+
+        List<BookingGuests> bookingGuestsList = new ArrayList<>();
+        bookingGuestsDtoList.forEach(bookingGuestsDto -> {
+            BookingGuests bookingGuests = new BookingGuests(bookingGuestsDto);
+            bookingGuests.settingBooking(resultBooking);
+            bookingGuestsList.add(bookingGuests);
+        });
+
+        bookingService.saveBookingGuests(bookingGuestsList);
+
+        Optional<Booking> byId = bookingRepository.findById(resultBooking.getId());
+        List<BookingGuests> byGuests = bookingGuestsRepository.findAll();
+
         // then  : 원하는 예약이 생성됨
+        assertThat(byId.get().getId()).isEqualTo(byGuests.get(0).getBooking().getId());
+
         //       : 예약한 게스트 수가 일치해야함
+        assertThat(byGuests.size()).isEqualTo(requestSaveBookingDto.getBookingGuestsDto().size());
+
         //       : 게스트별 요금의 총 요금과 예약의 총 요금이 동일해야함
+        BigDecimal totalFee = byGuests.stream()
+                    .map(BookingGuests::getGuestFee)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        assertThat(byId.get().getBookingTotalFee()).isEqualTo(totalFee);
+
     }
 }

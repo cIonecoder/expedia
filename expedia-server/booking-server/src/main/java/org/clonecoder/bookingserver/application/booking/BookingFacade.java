@@ -32,7 +32,7 @@ public class BookingFacade {
         List<BookingGuests> bookingGuestsList = new ArrayList<>();
         bookingGuestsCommandList.forEach(bookingGuestsCommand -> {
             BookingGuests bookingGuests = bookingGuestsCommand.toEntity();
-            bookingGuests.settingBooking(bookingGuests, resultBooking);
+            bookingGuests.settingBooking(resultBooking);
             bookingGuestsList.add(bookingGuests);
         });
 
