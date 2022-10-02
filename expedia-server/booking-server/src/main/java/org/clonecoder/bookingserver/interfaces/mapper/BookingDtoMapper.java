@@ -6,7 +6,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookingDtoMapper {
+    /**
+     * BookingDto to BookingCommand
+     * @param bookingDto
+     * @return
+     */
     public BookingCommand of(BookingDto bookingDto) {
-        return new BookingCommand();
+        return new BookingCommand().toCommand(bookingDto);
     }
 }

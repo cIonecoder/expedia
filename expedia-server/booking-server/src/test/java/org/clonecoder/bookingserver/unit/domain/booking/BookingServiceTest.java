@@ -1,10 +1,10 @@
-package org.clonecoder.bookingserver.unit;
+package org.clonecoder.bookingserver.unit.domain.booking;
 
 import org.clonecoder.bookingserver.common.enums.EnumGuestType;
 import org.clonecoder.bookingserver.common.enums.EnumOrderState;
+import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
 import org.clonecoder.bookingserver.domain.booking.BookingStore;
-import org.clonecoder.bookingserver.domain.command.BookingCommand;
 import org.clonecoder.bookingserver.infrastructure.BookingGuestsRepository;
 import org.clonecoder.bookingserver.infrastructure.BookingRepository;
 import org.clonecoder.bookingserver.interfaces.dto.BookingDto;
@@ -22,8 +22,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
 @ExtendWith(MockitoExtension.class)
-public class BookingServiceMockTest {
+class BookingServiceTest {
     @InjectMocks
     private BookingService bookingService;
 
@@ -35,9 +38,6 @@ public class BookingServiceMockTest {
 
     @Mock
     private BookingGuestsRepository bookingGuestsRepository;
-
-    @Mock
-    private BookingCommand bookingCommand;
 
     private RequestSaveBookingDto requestSaveBookingDto;
 
@@ -89,8 +89,8 @@ public class BookingServiceMockTest {
 
         bookingGuestsDtoList.add(guest2);
 
-        paramDto.setBooking(bookingDto);
-        paramDto.setBookingGuests(bookingGuestsDtoList);
+        paramDto.setBookingDto(bookingDto);
+        paramDto.setBookingGuestsDto(bookingGuestsDtoList);
 
         requestSaveBookingDto = paramDto;
     }
@@ -102,7 +102,6 @@ public class BookingServiceMockTest {
         // when  : 예약 정보를 기반으로 생성 요청
 
         // then  : 원하는 예약이 생성됨
-
     }
 
     @Test

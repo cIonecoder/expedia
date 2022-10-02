@@ -1,9 +1,9 @@
 package org.clonecoder.bookingserver.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.clonecoder.bookingserver.common.enums.EnumGuestType;
+import org.clonecoder.bookingserver.interfaces.dto.BookingGuestsDto;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 public class BookingGuests {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,4 +35,39 @@ public class BookingGuests {
     private LocalDateTime lastModified;
     private String createdBy;
     private LocalDateTime createdAt;
+
+    /**
+     * BookingGuestsDto to BookingGuests
+     * @param bookingGuestsDto
+     */
+    public BookingGuests(BookingGuestsDto bookingGuestsDto) {
+        this.guestType = bookingGuestsDto.getEnumGuestType();
+        this.guestLastName = bookingGuestsDto.getGuestLastName();
+        this.guestFirstName = bookingGuestsDto.getGuestFirstName();
+        this.guestHpno = bookingGuestsDto.getGuestHpno();
+        this.guestEmail = bookingGuestsDto.getGuestEmail();
+        this.guestAge = bookingGuestsDto.getGuestAge();
+        this.guestFee = bookingGuestsDto.getGuestFee();
+        this.lastModifiedBy = bookingGuestsDto.getLastModifiedBy();
+        this.lastModified = bookingGuestsDto.getLastModified();
+        this.createdBy = bookingGuestsDto.getCreatedBy();
+    }
+
+    /**
+     * privte booking set
+     * @param booking
+     */
+    private void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    /**
+     * booking setting
+     *
+     * @param bookingGuests
+     * @param booking
+     */
+    public void settingBooking(BookingGuests bookingGuests, Booking booking) {
+        bookingGuests.setBooking(booking);
+    }
 }

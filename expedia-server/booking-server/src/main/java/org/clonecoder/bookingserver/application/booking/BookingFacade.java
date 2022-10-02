@@ -26,16 +26,18 @@ public class BookingFacade {
         /* booking 저장 */
         Booking booking = bookingCommand.toEntity();
 
-        Long bookingId = bookingService.saveBooking(booking).getId();
+        Booking resultBooking = bookingService.saveBooking(booking);
 
         /* booking guests List 저장 */
         List<BookingGuests> bookingGuestsList = new ArrayList<>();
         bookingGuestsCommandList.forEach(bookingGuestsCommand -> {
-            bookingGuestsList.add(bookingGuestsCommand.toEntity(bookingId));
+            BookingGuests bookingGuests = bookingGuestsCommand.toEntity();
+            bookingGuests.settingBooking(bookingGuests, resultBooking);
+            bookingGuestsList.add(bookingGuests);
         });
 
         bookingService.saveBookingGuests(bookingGuestsList);
 
-        return bookingId;
+        return resultBooking.getId();
     }
 }

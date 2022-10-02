@@ -25,8 +25,8 @@ public class BookingController {
     @PostMapping("")
     public Long saveBooking(@RequestBody RequestSaveBookingDto requestSaveBookingDto) {
         /* to command */
-        BookingCommand bookingCommand = bookingDtoMapper.of(requestSaveBookingDto.getBooking());
-        List<BookingGuestsCommand> bookingGuestsCommandList = bookingGuestsDtoMapper.of(requestSaveBookingDto.getBookingGuests());
+        BookingCommand bookingCommand = bookingDtoMapper.of(requestSaveBookingDto.getBookingDto());
+        List<BookingGuestsCommand> bookingGuestsCommandList = bookingGuestsDtoMapper.of(requestSaveBookingDto.getBookingGuestsDto());
 
         return bookingFacade.saveBooking(bookingCommand, bookingGuestsCommandList);
     }

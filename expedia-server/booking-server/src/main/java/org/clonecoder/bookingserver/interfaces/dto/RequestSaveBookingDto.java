@@ -12,6 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestSaveBookingDto {
-    private BookingDto booking;
-    private List<BookingGuestsDto> bookingGuests;
+    private BookingDto bookingDto;
+    private List<BookingGuestsDto> bookingGuestsDto;
 }
