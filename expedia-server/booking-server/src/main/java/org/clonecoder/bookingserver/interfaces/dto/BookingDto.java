@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.clonecoder.bookingserver.common.enums.EnumOrderState;
+import org.clonecoder.bookingserver.domain.Booking;
+import org.clonecoder.bookingserver.domain.command.BookingCommand;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -30,4 +32,23 @@ public class BookingDto {
     private LocalDateTime lastModified;
     private String createdBy;
     private LocalDateTime createdAt;
+
+    public BookingCommand toCommand() {
+        BookingCommand bookingCommand = new BookingCommand();
+        bookingCommand.setBookingNo(this.getBookingNo());
+        bookingCommand.setAccommodationRoomId(this.getAccommodationRoomId());
+        bookingCommand.setBookingUserId(this.getBookingUserId());
+        bookingCommand.setBookingLastName(this.getBookingLastName());
+        bookingCommand.setBookingFirstName(this.getBookingFirstName());
+        bookingCommand.setBookingHpno(this.getBookingHpno());
+        bookingCommand.setBookingEmail(this.getBookingEmail());
+        bookingCommand.setCheckinStartDateTime(this.getCheckinStartDateTime());
+        bookingCommand.setCheckinStartDateTime(this.getCheckinStartDateTime());
+        bookingCommand.setBookingTotalFee(this.getBookingTotalFee());
+        bookingCommand.setEnumOrderState(this.enumOrderState);
+        bookingCommand.setLastModified(this.lastModified);
+        bookingCommand.setCreatedBy(this.getCreatedBy());
+
+        return bookingCommand;
+    }
 }

@@ -46,6 +46,62 @@ class BookingServiceTest {
 
     @BeforeEach
     void setUp() {
+        createParam();
+    }
+
+    @Test
+    void 예약_생성() {
+        // given : 예약 정보를 셋팅
+        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
+
+        // when  : 예약 정보를 기반으로 생성 요청
+        Booking booking = new Booking(bookingDto.toCommand());
+        Booking resultBooking = bookingService.saveBooking(booking);
+
+        Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
+
+        // then  : 원하는 예약이 생성됨
+        assertThat(resultBooking.getBookingNo()).isEqualTo(findBooking.get().getBookingNo());
+    }
+
+    @Test
+    void 예약_게스트_생성() {
+        // given : 예약 게스트 정보를 셋팅
+        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
+        List<BookingGuestsDto> bookingGuestsDtoList = requestSaveBookingDto.getBookingGuestsDto();
+
+        // when  : 예약 게스트 정보를 기반으로 생성 요청
+        Booking booking = new Booking(bookingDto.toCommand());
+        Booking resultBooking = bookingService.saveBooking(booking);
+
+        List<BookingGuests> bookingGuestsList = new ArrayList<>();
+        bookingGuestsDtoList.forEach(bookingGuestsDto -> {
+            BookingGuests bookingGuests = new BookingGuests(bookingGuestsDto.toCommand());
+            bookingGuests.settingBooking(resultBooking);
+            bookingGuestsList.add(bookingGuests);
+        });
+
+        bookingService.saveBookingGuests(bookingGuestsList);
+
+        // then
+        Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
+        List<BookingGuests> findBookingGuests = bookingGuestsRepository.findAll();
+
+        // 1) 원하는 예약이 생성됨
+        assertThat(findBooking.get().getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
+
+        // 2) 예약한 게스트 수가 일치해야함
+        assertThat(findBookingGuests.size()).isEqualTo(requestSaveBookingDto.getBookingGuestsDto().size());
+
+        // 3) 게스트별 요금의 총 요금과 예약의 총 요금이 동일해야함
+        BigDecimal totalFee = findBookingGuests.stream()
+                    .map(BookingGuests::getGuestFee)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
+        assertThat(findBooking.get().getBookingTotalFee()).isEqualTo(totalFee);
+
+    }
+
+    private void createParam() {
         RequestSaveBookingDto paramDto = new RequestSaveBookingDto();
         List<BookingGuestsDto> bookingGuestsDtoList = new ArrayList<>();
 
@@ -94,57 +150,5 @@ class BookingServiceTest {
         paramDto.setBookingGuestsDto(bookingGuestsDtoList);
 
         requestSaveBookingDto = paramDto;
-    }
-
-    @Test
-    void 예약_생성() {
-        // given : 예약 정보를 셋팅
-        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
-
-        // when  : 예약 정보를 기반으로 생성 요청
-        Booking booking = new Booking(bookingDto);
-        Booking resultBooking = bookingService.saveBooking(booking);
-
-        Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
-
-        // then  : 원하는 예약이 생성됨
-        assertThat(resultBooking.getBookingNo()).isEqualTo(findBooking.get().getBookingNo());
-    }
-
-    @Test
-    void 예약_게스트_생성() {
-        // given : 예약 게스트 정보를 셋팅
-        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
-        List<BookingGuestsDto> bookingGuestsDtoList = requestSaveBookingDto.getBookingGuestsDto();
-
-        // when  : 예약 게스트 정보를 기반으로 생성 요청
-        Booking booking = new Booking(bookingDto);
-        Booking resultBooking = bookingService.saveBooking(booking);
-
-        List<BookingGuests> bookingGuestsList = new ArrayList<>();
-        bookingGuestsDtoList.forEach(bookingGuestsDto -> {
-            BookingGuests bookingGuests = new BookingGuests(bookingGuestsDto);
-            bookingGuests.settingBooking(resultBooking);
-            bookingGuestsList.add(bookingGuests);
-        });
-
-        bookingService.saveBookingGuests(bookingGuestsList);
-
-        // then
-        Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
-        List<BookingGuests> findBookingGuests = bookingGuestsRepository.findAll();
-
-        // 1) 원하는 예약이 생성됨
-        assertThat(findBooking.get().getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
-
-        // 2) 예약한 게스트 수가 일치해야함
-        assertThat(findBookingGuests.size()).isEqualTo(requestSaveBookingDto.getBookingGuestsDto().size());
-
-        // 3) 게스트별 요금의 총 요금과 예약의 총 요금이 동일해야함
-        BigDecimal totalFee = findBookingGuests.stream()
-                    .map(BookingGuests::getGuestFee)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add);
-        assertThat(findBooking.get().getBookingTotalFee()).isEqualTo(totalFee);
-
     }
 }

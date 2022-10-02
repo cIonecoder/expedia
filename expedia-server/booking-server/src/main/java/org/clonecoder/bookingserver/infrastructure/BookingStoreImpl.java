@@ -15,8 +15,7 @@ public class BookingStoreImpl implements BookingStore {
     private final BookingGuestsRepository bookingGuestsRepository;
 
     /**
-     * 숙박 업체 저장
-     *
+     * 예약 저장
      * @param booking
      */
     public Booking saveBooking(Booking booking) {
@@ -24,7 +23,7 @@ public class BookingStoreImpl implements BookingStore {
     }
 
     /**
-     * 숙박업체 권한 정보 저장
+     * 예약 게스트 정보 저장
      * @param bookingGuests
      */
     public void saveBookingGuests(List<BookingGuests> bookingGuests) {

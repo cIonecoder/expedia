@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RequestSaveBookingDto {
+public class RequestSaveBookingDto extends BaseDto{
     private BookingDto bookingDto;
     private List<BookingGuestsDto> bookingGuestsDto;
 }

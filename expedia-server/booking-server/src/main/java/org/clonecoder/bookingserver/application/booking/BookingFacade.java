@@ -7,6 +7,7 @@ import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class BookingFacade {
      * @param bookingGuestsCommandList
      * @return
      */
+    @Transactional
     public Long saveBooking(BookingCommand bookingCommand, List<BookingGuestsCommand> bookingGuestsCommandList) {
         /* booking 저장 */
         Booking booking = bookingCommand.toEntity();

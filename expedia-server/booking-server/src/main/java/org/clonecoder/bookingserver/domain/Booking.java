@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @NoArgsConstructor
-public class Booking {
+public class Booking extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,28 +33,23 @@ public class Booking {
     @Enumerated(EnumType.STRING)
     private EnumOrderState orderState;
 
-    private String lastModifiedBy;
-    private LocalDateTime lastModified;
-    private String createdBy;
-    private LocalDateTime createdAt;
-
     /**
      * bookingDto to Booking
-     * @param bookingDto
+     * @param bookingCommand
      */
-    public Booking(BookingDto bookingDto) {
-        this.bookingNo = bookingDto.getBookingNo();
-        this.accommodationRoomId = bookingDto.getAccommodationRoomId();
-        this.bookingUserId = bookingDto.getBookingUserId();
-        this.bookingLastName = bookingDto.getBookingLastName();
-        this.bookingFirstName = bookingDto.getBookingFirstName();
-        this.bookingHpno = bookingDto.getBookingHpno();
-        this.bookingEmail = bookingDto.getBookingEmail();
-        this.checkinStartDateTime = bookingDto.getCheckinStartDateTime();
-        this.checkinEndDateTime = bookingDto.getCheckinEndDateTime();
-        this.bookingTotalFee = bookingDto.getBookingTotalFee();
-        this.orderState = bookingDto.getEnumOrderState();
-        this.lastModifiedBy = bookingDto.getLastModifiedBy();
-        this.createdBy = bookingDto.getCreatedBy();
+    public Booking(BookingCommand bookingCommand) {
+        this.bookingNo = bookingCommand.getBookingNo();
+        this.accommodationRoomId = bookingCommand.getAccommodationRoomId();
+        this.bookingUserId = bookingCommand.getBookingUserId();
+        this.bookingLastName = bookingCommand.getBookingLastName();
+        this.bookingFirstName = bookingCommand.getBookingFirstName();
+        this.bookingHpno = bookingCommand.getBookingHpno();
+        this.bookingEmail = bookingCommand.getBookingEmail();
+        this.checkinStartDateTime = bookingCommand.getCheckinStartDateTime();
+        this.checkinEndDateTime = bookingCommand.getCheckinEndDateTime();
+        this.bookingTotalFee = bookingCommand.getBookingTotalFee();
+        this.orderState = bookingCommand.getEnumOrderState();
+        this.setLastModifiedBy(bookingCommand.getLastModifiedBy());
+        this.setCreatedBy(bookingCommand.getCreatedBy());
     }
 }

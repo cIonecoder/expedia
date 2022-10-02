@@ -22,7 +22,7 @@ public class BookingController {
     private final BookingDtoMapper bookingDtoMapper;
     private final BookingGuestsDtoMapper bookingGuestsDtoMapper;
 
-    @PostMapping("")
+    @PostMapping()
     public Long saveBooking(@RequestBody RequestSaveBookingDto requestSaveBookingDto) {
         /* to command */
         BookingCommand bookingCommand = bookingDtoMapper.of(requestSaveBookingDto.getBookingDto());

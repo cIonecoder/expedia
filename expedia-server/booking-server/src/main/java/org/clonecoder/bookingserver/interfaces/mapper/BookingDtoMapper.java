@@ -12,6 +12,6 @@ public class BookingDtoMapper {
      * @return
      */
     public BookingCommand of(BookingDto bookingDto) {
-        return new BookingCommand().toCommand(bookingDto);
+        return bookingDto.toCommand();
     }
 }

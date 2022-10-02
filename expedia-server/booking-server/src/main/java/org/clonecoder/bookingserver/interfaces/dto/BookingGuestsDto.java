@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.clonecoder.bookingserver.common.enums.EnumGuestType;
 import org.clonecoder.bookingserver.domain.Booking;
+import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookingGuestsDto {
+public class BookingGuestsDto extends BaseDto {
     private Long id;
     private Long bookingId;
     private EnumGuestType enumGuestType;
@@ -27,8 +28,21 @@ public class BookingGuestsDto {
     private String guestEmail;
     private int guestAge;
     private BigDecimal guestFee;
-    private String lastModifiedBy;
-    private LocalDateTime lastModified;
-    private String createdBy;
-    private LocalDateTime createdAt;
+
+    public BookingGuestsCommand toCommand() {
+        BookingGuestsCommand bookingGuestsCommand = new BookingGuestsCommand();
+        bookingGuestsCommand.setBookingId(this.bookingId);
+        bookingGuestsCommand.setEnumGuestType(this.enumGuestType);
+        bookingGuestsCommand.setGuestLastName(this.getGuestLastName());
+        bookingGuestsCommand.setGuestFirstName(this.getGuestFirstName());
+        bookingGuestsCommand.setGuestHpno(this.getGuestHpno());
+        bookingGuestsCommand.setGuestHpno(this.getGuestHpno());
+        bookingGuestsCommand.setGuestEmail(this.getGuestEmail());
+        bookingGuestsCommand.setGuestAge(this.getGuestAge());
+        bookingGuestsCommand.setGuestFee(this.getGuestFee());
+        bookingGuestsCommand.setCreatedBy(this.getCreatedBy());
+        bookingGuestsCommand.setLastModifiedBy(this.getLastModifiedBy());
+
+        return bookingGuestsCommand;
+    }
 }
