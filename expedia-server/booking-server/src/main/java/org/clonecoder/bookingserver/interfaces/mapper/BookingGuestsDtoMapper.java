@@ -2,12 +2,12 @@ package org.clonecoder.bookingserver.interfaces.mapper;
 
 import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.clonecoder.bookingserver.interfaces.dto.BookingGuestsDto;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Component
 public class BookingGuestsDtoMapper {
     /**
      * List<BookingGuestsDto> to List<BookingGuestsCommand>

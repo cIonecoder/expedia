@@ -2,9 +2,9 @@ package org.clonecoder.bookingserver.interfaces.mapper;
 
 import org.clonecoder.bookingserver.domain.command.BookingCommand;
 import org.clonecoder.bookingserver.interfaces.dto.BookingDto;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class BookingDtoMapper {
     /**
      * BookingDto to BookingCommand
