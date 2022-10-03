@@ -34,14 +34,15 @@
 > Gradle Multi module 로 구성
 
 - __platform-server__
-  - authentication-server
-  - authorization-server
+  - auth-server
   - payment-server
   - message-server
 - __expedia-server__
   - booking-server
   
 ### Package
+
+> DDD 지향
 
 - __interfaces__
   - 사용자에게 정보를 보여주고 사용자의 명령을 해석하는 일을 책임진다.
@@ -98,4 +99,22 @@
 4. 테스트 케이스를 통과시키기 위한 도메인 로직 작성 (production)
 5. 테스트 케이스 성공 시키고(success-unittest)
 6. 인수테스트를 성공 시키기(success-acceptance)
+
+## Step
+
+> 각 단계를 거칠 수록 비지니스 로직의 깊이가 깊어진다.
+
+- __V1: Rest Call__
+  - 사용자 위주의 구현
+  - 비지니스 로직의 깊이 최대한 얇게
+- __V2: Event Driven__
+  - 내부 서비스간의 호출은 gRPC 사용
+  - Kafka 활용 
+- __V3: async__
+  - 동기 코드를 비동기 코드로 전환
+  - Spring Webflux + Coroutines 사용
+- __V4: Spring cloud__
+  - Spring Cloud 적용 하기
+  
+### Version 1 - Architctures
 
