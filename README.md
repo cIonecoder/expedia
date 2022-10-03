@@ -118,3 +118,14 @@
   
 ### Version 1 - Architctures
 
+#### Login 
+
+![login](https://user-images.githubusercontent.com/47518272/193559220-d2ecb1dd-c410-4eb4-a355-46349deccc45.png)
+
+- Redis 에 RefreshToken 
+
+#### 주문 생성 요청
+
+![simple-v1](https://user-images.githubusercontent.com/47518272/193559287-7ff48040-84dd-46ba-bd39-5e04decb43ac.png)
+
+- 결제 서비스 미적용
