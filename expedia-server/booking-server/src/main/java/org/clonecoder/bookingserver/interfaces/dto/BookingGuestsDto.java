@@ -28,13 +28,12 @@ public class BookingGuestsDto extends BaseDto {
         BookingGuestsCommand bookingGuestsCommand = new BookingGuestsCommand();
         bookingGuestsCommand.setBookingId(this.bookingId);
         bookingGuestsCommand.setEnumGuestType(this.enumGuestType);
-        bookingGuestsCommand.setGuestLastName(this.getGuestLastName());
-        bookingGuestsCommand.setGuestFirstName(this.getGuestFirstName());
-        bookingGuestsCommand.setGuestHpno(this.getGuestHpno());
-        bookingGuestsCommand.setGuestHpno(this.getGuestHpno());
-        bookingGuestsCommand.setGuestEmail(this.getGuestEmail());
-        bookingGuestsCommand.setGuestAge(this.getGuestAge());
-        bookingGuestsCommand.setGuestFee(this.getGuestFee());
+        bookingGuestsCommand.setGuestLastName(this.guestLastName);
+        bookingGuestsCommand.setGuestFirstName(this.guestFirstName);
+        bookingGuestsCommand.setGuestHpno(this.guestHpno);
+        bookingGuestsCommand.setGuestEmail(this.guestEmail);
+        bookingGuestsCommand.setGuestAge(this.guestAge);
+        bookingGuestsCommand.setGuestFee(this.guestFee);
         bookingGuestsCommand.setCreatedBy(this.getCreatedBy());
         bookingGuestsCommand.setLastModifiedBy(this.getLastModifiedBy());
 

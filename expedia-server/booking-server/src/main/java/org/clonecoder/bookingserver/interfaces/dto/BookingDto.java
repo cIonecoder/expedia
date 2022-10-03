@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookingDto {
+public class BookingDto extends BaseDto {
     private Long id;
     private String bookingNo;
     private Long accommodationRoomId;
@@ -27,25 +27,21 @@ public class BookingDto {
     private LocalDateTime checkinEndDateTime;
     private BigDecimal bookingTotalFee;
     private EnumOrderState enumOrderState;
-    private String lastModifiedBy;
-    private LocalDateTime lastModified;
-    private String createdBy;
-    private LocalDateTime createdAt;
 
     public BookingCommand toCommand() {
         BookingCommand bookingCommand = new BookingCommand();
-        bookingCommand.setBookingNo(this.getBookingNo());
-        bookingCommand.setAccommodationRoomId(this.getAccommodationRoomId());
-        bookingCommand.setBookingUserId(this.getBookingUserId());
-        bookingCommand.setBookingLastName(this.getBookingLastName());
-        bookingCommand.setBookingFirstName(this.getBookingFirstName());
-        bookingCommand.setBookingHpno(this.getBookingHpno());
-        bookingCommand.setBookingEmail(this.getBookingEmail());
-        bookingCommand.setCheckinStartDateTime(this.getCheckinStartDateTime());
-        bookingCommand.setCheckinStartDateTime(this.getCheckinStartDateTime());
-        bookingCommand.setBookingTotalFee(this.getBookingTotalFee());
+        bookingCommand.setBookingNo(this.bookingNo);
+        bookingCommand.setAccommodationRoomId(this.accommodationRoomId);
+        bookingCommand.setBookingUserId(this.bookingUserId);
+        bookingCommand.setBookingLastName(this.bookingLastName);
+        bookingCommand.setBookingFirstName(this.bookingFirstName);
+        bookingCommand.setBookingHpno(this.bookingHpno);
+        bookingCommand.setBookingEmail(this.bookingEmail);
+        bookingCommand.setCheckinStartDateTime(this.checkinStartDateTime);
+        bookingCommand.setCheckinEndDateTime(this.checkinEndDateTime);
+        bookingCommand.setBookingTotalFee(this.bookingTotalFee);
         bookingCommand.setEnumOrderState(this.enumOrderState);
-        bookingCommand.setLastModified(this.lastModified);
+        bookingCommand.setLastModifiedBy(this.getLastModifiedBy());
         bookingCommand.setCreatedBy(this.getCreatedBy());
 
         return bookingCommand;

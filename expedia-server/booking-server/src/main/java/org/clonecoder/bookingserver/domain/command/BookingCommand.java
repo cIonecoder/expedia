@@ -23,9 +23,7 @@ public class BookingCommand {
     private BigDecimal bookingTotalFee;
     private EnumOrderState enumOrderState;
     private String lastModifiedBy;
-    private LocalDateTime lastModified;
     private String createdBy;
-    private LocalDateTime createdAt;
 
     public Booking toEntity() {
         return new Booking(this);

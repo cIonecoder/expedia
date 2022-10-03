@@ -19,14 +19,12 @@ import java.util.List;
 @RequestMapping("/booking")
 public class BookingController {
     private final BookingFacade bookingFacade;
-    private final BookingDtoMapper bookingDtoMapper;
-    private final BookingGuestsDtoMapper bookingGuestsDtoMapper;
 
-    @PostMapping()
+    @PostMapping
     public Long saveBooking(@RequestBody RequestBookingDto.saveDto requestSaveDto) {
         /* to command */
-        BookingCommand bookingCommand = bookingDtoMapper.of(requestSaveDto.getBookingDto());
-        List<BookingGuestsCommand> bookingGuestsCommandList = bookingGuestsDtoMapper.of(requestSaveDto.getBookingGuestsDto());
+        BookingCommand bookingCommand = BookingDtoMapper.of(requestSaveDto.getBookingDto());
+        List<BookingGuestsCommand> bookingGuestsCommandList = BookingGuestsDtoMapper.of(requestSaveDto.getBookingGuestsDto());
 
         return bookingFacade.saveBooking(bookingCommand, bookingGuestsCommandList);
     }

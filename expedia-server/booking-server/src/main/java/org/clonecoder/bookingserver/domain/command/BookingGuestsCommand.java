@@ -21,9 +21,7 @@ public class BookingGuestsCommand {
     private int guestAge;
     private BigDecimal guestFee;
     private String lastModifiedBy;
-    private LocalDateTime lastModified;
     private String createdBy;
-    private LocalDateTime createdAt;
 
     public BookingGuests toEntity() {
         return new BookingGuests(this);

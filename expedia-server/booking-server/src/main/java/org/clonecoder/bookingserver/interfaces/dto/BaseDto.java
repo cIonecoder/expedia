@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Setter
 public class BaseDto {
     private String lastModifiedBy;
-    private LocalDateTime lastModified;
+    private LocalDateTime lastModifiedAt;
     private String createdBy;
     private LocalDateTime createdAt;
 }

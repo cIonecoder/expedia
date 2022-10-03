@@ -3,8 +3,11 @@ package org.clonecoder.bookingserver.domain.booking;
 import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
+import org.clonecoder.bookingserver.domain.command.BookingCommand;
+import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,17 +17,24 @@ public class BookingService {
 
     /**
      * 예약 저장
-     * @param booking
+     * @param bookingCommand
+     * @param bookingGuestsCommandList
+     * @return
      */
-    public Booking saveBooking(Booking booking) {
-       return bookingStore.saveBooking(booking);
-    }
+    public Booking saveBooking(BookingCommand bookingCommand, List<BookingGuestsCommand> bookingGuestsCommandList) {
+        /* booking 저장 */
+        Booking booking = bookingCommand.toEntity();
+        Booking resultBooking = bookingStore.saveBooking(booking);
 
-    /**
-     * 예약 게스트 저장
-     * @param bookingGuests
-     */
-    public void saveBookingGuests(List<BookingGuests> bookingGuests) {
-        bookingStore.saveBookingGuests(bookingGuests);
+        /* booking guests List 저장 */
+        List<BookingGuests> bookingGuestsList = new ArrayList<>();
+        bookingGuestsCommandList.forEach(bookingGuestsCommand -> {
+            BookingGuests bookingGuests = bookingGuestsCommand.toEntity();
+            bookingGuests.settingBooking(resultBooking);
+            bookingGuestsList.add(bookingGuests);
+        });
+
+        bookingStore.saveBookingGuests(bookingGuestsList);
+        return resultBooking;
     }
 }
