@@ -1,13 +1,13 @@
 # Expedia Clone Coding
 
 - __Table of Contents__
-  - [개발](https://github.com/cIonecoder/expedia#%EA%B0%9C%EB%B0%9C)
-  - [프로젝트 구조](https://github.com/cIonecoder/expedia#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%A1%B0)
-    - [패키지 구조](https://github.com/cIonecoder/expedia#%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B5%AC%EC%A1%B0)
+  - [Rule](https://github.com/cIonecoder/expedia#%EA%B0%9C%EB%B0%9C)
+  - [Project Structures](https://github.com/cIonecoder/expedia#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%A1%B0)
+    - [Package](https://github.com/cIonecoder/expedia#%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B5%AC%EC%A1%B0)
   - [VCS](https://github.com/cIonecoder/expedia#vcs)
   - [Test](https://github.com/cIonecoder/expedia#test)
 
-## 개발
+## Rule
 
 - __Language__
   - Kotlin or Java
@@ -29,7 +29,7 @@
   - interfaces, application, domain, infrastructure
   - 패키지간 의존성 방향을 한 곳으로 흐르게끔 설계
 
-## 프로젝트 구조
+## Project Structures
 
 > Gradle Multi module 로 구성
 
@@ -41,7 +41,7 @@
 - __expedia-server__
   - booking-server
   
-### 패키지 구조
+### Package
 
 - __interfaces__
   - 사용자에게 정보를 보여주고 사용자의 명령을 해석하는 일을 책임진다.
