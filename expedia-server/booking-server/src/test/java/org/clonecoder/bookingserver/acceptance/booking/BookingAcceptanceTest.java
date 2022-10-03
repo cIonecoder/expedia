@@ -21,6 +21,6 @@ public class BookingAcceptanceTest extends AcceptanceTest {
         ExtractableResponse<Response> response = 예약_생성_요청();
 
         // then
-        assertThat(response.statusCode()).isEqualTo(HttpStatus.CREATED.value());
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
     }
 }

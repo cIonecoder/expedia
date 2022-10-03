@@ -14,6 +14,6 @@ public class RequestBookingDto {
     @AllArgsConstructor
     public static class saveDto {
         private BookingDto bookingDto;
-        private List<BookingGuestsDto> bookingGuestsDto;
+        private List<BookingGuestsDto> bookingGuestsDtoList;
     }
 }
