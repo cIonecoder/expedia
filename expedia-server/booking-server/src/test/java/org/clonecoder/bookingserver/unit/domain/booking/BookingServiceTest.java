@@ -1,22 +1,17 @@
 package org.clonecoder.bookingserver.unit.domain.booking;
 
-import org.clonecoder.bookingserver.common.enums.EnumGuestType;
-import org.clonecoder.bookingserver.common.enums.EnumOrderState;
+import org.clonecoder.bookingserver.domain.enums.EnumGuestType;
+import org.clonecoder.bookingserver.domain.enums.EnumOrderState;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
-import org.clonecoder.bookingserver.domain.booking.BookingStore;
 import org.clonecoder.bookingserver.infrastructure.BookingGuestsRepository;
 import org.clonecoder.bookingserver.infrastructure.BookingRepository;
 import org.clonecoder.bookingserver.interfaces.dto.BookingDto;
 import org.clonecoder.bookingserver.interfaces.dto.BookingGuestsDto;
-import org.clonecoder.bookingserver.interfaces.dto.RequestSaveBookingDto;
+import org.clonecoder.bookingserver.interfaces.dto.RequestBookingDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +23,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @Transactional
@@ -42,7 +36,7 @@ class BookingServiceTest {
     @Autowired
     private BookingGuestsRepository bookingGuestsRepository;
 
-    private RequestSaveBookingDto requestSaveBookingDto;
+    private final RequestBookingDto.saveDto requestBookingSaveDto = new RequestBookingDto.saveDto();
 
     @BeforeEach
     void setUp() {
@@ -52,7 +46,7 @@ class BookingServiceTest {
     @Test
     void 예약_생성() {
         // given : 예약 정보를 셋팅
-        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
+        BookingDto bookingDto = requestBookingSaveDto.getBookingDto();
 
         // when  : 예약 정보를 기반으로 생성 요청
         Booking booking = new Booking(bookingDto.toCommand());
@@ -67,8 +61,8 @@ class BookingServiceTest {
     @Test
     void 예약_게스트_생성() {
         // given : 예약 게스트 정보를 셋팅
-        BookingDto bookingDto = requestSaveBookingDto.getBookingDto();
-        List<BookingGuestsDto> bookingGuestsDtoList = requestSaveBookingDto.getBookingGuestsDto();
+        BookingDto bookingDto = requestBookingSaveDto.getBookingDto();
+        List<BookingGuestsDto> bookingGuestsDtoList = requestBookingSaveDto.getBookingGuestsDto();
 
         // when  : 예약 게스트 정보를 기반으로 생성 요청
         Booking booking = new Booking(bookingDto.toCommand());
@@ -91,7 +85,7 @@ class BookingServiceTest {
         assertThat(findBooking.get().getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
 
         // 2) 예약한 게스트 수가 일치해야함
-        assertThat(findBookingGuests.size()).isEqualTo(requestSaveBookingDto.getBookingGuestsDto().size());
+        assertThat(findBookingGuests.size()).isEqualTo(requestBookingSaveDto.getBookingGuestsDto().size());
 
         // 3) 게스트별 요금의 총 요금과 예약의 총 요금이 동일해야함
         BigDecimal totalFee = findBookingGuests.stream()
@@ -102,7 +96,6 @@ class BookingServiceTest {
     }
 
     private void createParam() {
-        RequestSaveBookingDto paramDto = new RequestSaveBookingDto();
         List<BookingGuestsDto> bookingGuestsDtoList = new ArrayList<>();
 
         BookingDto bookingDto = new BookingDto();
@@ -146,9 +139,7 @@ class BookingServiceTest {
 
         bookingGuestsDtoList.add(guest2);
 
-        paramDto.setBookingDto(bookingDto);
-        paramDto.setBookingGuestsDto(bookingGuestsDtoList);
-
-        requestSaveBookingDto = paramDto;
+        requestBookingSaveDto.setBookingDto(bookingDto);
+        requestBookingSaveDto.setBookingGuestsDto(bookingGuestsDtoList);
     }
 }

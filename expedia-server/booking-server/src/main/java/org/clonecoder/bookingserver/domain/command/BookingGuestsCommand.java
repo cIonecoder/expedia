@@ -2,15 +2,12 @@ package org.clonecoder.bookingserver.domain.command;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.clonecoder.bookingserver.common.enums.EnumGuestType;
+import org.clonecoder.bookingserver.domain.enums.EnumGuestType;
 import org.clonecoder.bookingserver.domain.BookingGuests;
-import org.clonecoder.bookingserver.interfaces.dto.BookingGuestsDto;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Component
 @Getter
 @Setter
 public class BookingGuestsCommand {

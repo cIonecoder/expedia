@@ -4,15 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.clonecoder.bookingserver.common.enums.EnumGuestType;
-import org.clonecoder.bookingserver.domain.Booking;
+import org.clonecoder.bookingserver.domain.enums.EnumGuestType;
 import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter

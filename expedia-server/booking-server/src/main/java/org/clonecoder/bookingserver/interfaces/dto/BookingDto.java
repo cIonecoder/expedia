@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.clonecoder.bookingserver.common.enums.EnumOrderState;
-import org.clonecoder.bookingserver.domain.Booking;
+import org.clonecoder.bookingserver.domain.enums.EnumOrderState;
 import org.clonecoder.bookingserver.domain.command.BookingCommand;
 
 import java.math.BigDecimal;

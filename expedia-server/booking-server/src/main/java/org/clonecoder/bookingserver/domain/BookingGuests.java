@@ -2,13 +2,11 @@ package org.clonecoder.bookingserver.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.clonecoder.bookingserver.common.enums.EnumGuestType;
+import org.clonecoder.bookingserver.domain.enums.EnumGuestType;
 import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
-import org.clonecoder.bookingserver.interfaces.dto.BookingGuestsDto;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Getter
 @Entity
@@ -25,10 +23,21 @@ public class BookingGuests extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private EnumGuestType guestType;
 
-    private String guestLastName;
-    private String guestFirstName;
-    private String guestHpno;
-    private String guestEmail;
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "last", column = @Column(name = "guest_last_name")),
+            @AttributeOverride(name = "first", column = @Column(name = "guest_first_name"))
+    })
+    private Name name;
+
+    @Embedded
+    @AttributeOverride(name = "phone", column = @Column(name = "guest_hpno"))
+    private Phone guestHpno;
+
+    @Embedded
+    @AttributeOverride(name = "email", column = @Column(name = "guest_email"))
+    private Email guestEmail;
+
     private int guestAge;
     private BigDecimal guestFee;
 
@@ -38,10 +47,9 @@ public class BookingGuests extends BaseEntity {
      */
     public BookingGuests(BookingGuestsCommand bookingGuestsCommand) {
         this.guestType = bookingGuestsCommand.getEnumGuestType();
-        this.guestLastName = bookingGuestsCommand.getGuestLastName();
-        this.guestFirstName = bookingGuestsCommand.getGuestFirstName();
-        this.guestHpno = bookingGuestsCommand.getGuestHpno();
-        this.guestEmail = bookingGuestsCommand.getGuestEmail();
+        this.name = new Name(bookingGuestsCommand.getGuestLastName(), bookingGuestsCommand.getGuestFirstName());
+        this.guestHpno = new Phone(bookingGuestsCommand.getGuestHpno());
+        this.guestEmail = new Email(bookingGuestsCommand.getGuestEmail());
         this.guestAge = bookingGuestsCommand.getGuestAge();
         this.guestFee = bookingGuestsCommand.getGuestFee();
         this.setLastModifiedBy(bookingGuestsCommand.getLastModifiedBy());

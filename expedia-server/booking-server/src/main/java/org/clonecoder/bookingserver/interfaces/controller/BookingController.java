@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.application.booking.BookingFacade;
 import org.clonecoder.bookingserver.domain.command.BookingCommand;
 import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
-import org.clonecoder.bookingserver.interfaces.dto.RequestSaveBookingDto;
+import org.clonecoder.bookingserver.interfaces.dto.RequestBookingDto;
 import org.clonecoder.bookingserver.interfaces.mapper.BookingDtoMapper;
 import org.clonecoder.bookingserver.interfaces.mapper.BookingGuestsDtoMapper;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +23,10 @@ public class BookingController {
     private final BookingGuestsDtoMapper bookingGuestsDtoMapper;
 
     @PostMapping()
-    public Long saveBooking(@RequestBody RequestSaveBookingDto requestSaveBookingDto) {
+    public Long saveBooking(@RequestBody RequestBookingDto.saveDto requestSaveDto) {
         /* to command */
-        BookingCommand bookingCommand = bookingDtoMapper.of(requestSaveBookingDto.getBookingDto());
-        List<BookingGuestsCommand> bookingGuestsCommandList = bookingGuestsDtoMapper.of(requestSaveBookingDto.getBookingGuestsDto());
+        BookingCommand bookingCommand = bookingDtoMapper.of(requestSaveDto.getBookingDto());
+        List<BookingGuestsCommand> bookingGuestsCommandList = bookingGuestsDtoMapper.of(requestSaveDto.getBookingGuestsDto());
 
         return bookingFacade.saveBooking(bookingCommand, bookingGuestsCommandList);
     }

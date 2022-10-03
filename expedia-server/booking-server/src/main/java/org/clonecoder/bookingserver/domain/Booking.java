@@ -1,11 +1,9 @@
 package org.clonecoder.bookingserver.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.clonecoder.bookingserver.common.enums.EnumOrderState;
+import org.clonecoder.bookingserver.domain.enums.EnumOrderState;
 import org.clonecoder.bookingserver.domain.command.BookingCommand;
-import org.clonecoder.bookingserver.interfaces.dto.BookingDto;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,10 +20,22 @@ public class Booking extends BaseEntity {
     private String bookingNo;
     private Long accommodationRoomId;
     private String bookingUserId;
-    private String bookingLastName;
-    private String bookingFirstName;
-    private String bookingHpno;
-    private String bookingEmail;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "last", column = @Column(name = "booking_last_name")),
+            @AttributeOverride(name = "first", column = @Column(name = "booking_first_name"))
+    })
+    private Name name;
+
+    @Embedded
+    @AttributeOverride(name = "phone", column = @Column(name = "booking_hpno"))
+    private Phone bookingHpno;
+
+    @Embedded
+    @AttributeOverride(name = "email", column = @Column(name = "booking_email"))
+    private Email bookingEmail;
+
     private LocalDateTime checkinStartDateTime;
     private LocalDateTime checkinEndDateTime;
     private BigDecimal bookingTotalFee;
@@ -41,10 +51,9 @@ public class Booking extends BaseEntity {
         this.bookingNo = bookingCommand.getBookingNo();
         this.accommodationRoomId = bookingCommand.getAccommodationRoomId();
         this.bookingUserId = bookingCommand.getBookingUserId();
-        this.bookingLastName = bookingCommand.getBookingLastName();
-        this.bookingFirstName = bookingCommand.getBookingFirstName();
-        this.bookingHpno = bookingCommand.getBookingHpno();
-        this.bookingEmail = bookingCommand.getBookingEmail();
+        this.name = new Name(bookingCommand.getBookingLastName(), bookingCommand.getBookingFirstName());
+        this.bookingHpno = new Phone(bookingCommand.getBookingHpno());
+        this.bookingEmail = new Email(bookingCommand.getBookingEmail());
         this.checkinStartDateTime = bookingCommand.getCheckinStartDateTime();
         this.checkinEndDateTime = bookingCommand.getCheckinEndDateTime();
         this.bookingTotalFee = bookingCommand.getBookingTotalFee();

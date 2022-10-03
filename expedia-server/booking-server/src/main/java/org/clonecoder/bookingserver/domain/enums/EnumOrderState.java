@@ -1,4 +1,4 @@
-package org.clonecoder.bookingserver.common.enums;
+package org.clonecoder.bookingserver.domain.enums;
 
 import lombok.Getter;
 
