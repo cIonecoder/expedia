@@ -126,6 +126,6 @@
 
 #### 주문 생성 요청
 
-![simple-v1](https://user-images.githubusercontent.com/47518272/193559287-7ff48040-84dd-46ba-bd39-5e04decb43ac.png)
+![simple-v1-create-order-not-payment](https://user-images.githubusercontent.com/47518272/193560539-d3236537-7b1c-403f-9e8a-98b34a57320b.png)
 
 - 결제 서비스 미적용
