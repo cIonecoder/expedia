@@ -2,17 +2,17 @@ package org.clonecoder.bookingserver.application.booking;
 
 import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.domain.Booking;
-import org.clonecoder.bookingserver.domain.command.BookingCommand;
 import org.clonecoder.bookingserver.domain.BookingGuests;
-import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
-import org.springframework.stereotype.Service;
+import org.clonecoder.bookingserver.domain.command.BookingCommand;
+import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class BookingFacade {
     private final BookingService bookingService;
