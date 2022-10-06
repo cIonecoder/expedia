@@ -1,11 +1,42 @@
-# Expedia Clone Coding
+# ✈️ Expedia Clone Coding
 
 - __Table of Contents__
-  - [Rule](https://github.com/cIonecoder/expedia#%EA%B0%9C%EB%B0%9C)
-  - [Project Structures](https://github.com/cIonecoder/expedia#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%A1%B0)
-    - [Package](https://github.com/cIonecoder/expedia#%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B5%AC%EC%A1%B0)
-  - [VCS](https://github.com/cIonecoder/expedia#vcs)
-  - [Test](https://github.com/cIonecoder/expedia#test)
+  - [팀 ](#)
+
+## 🚀 프로젝트 사용기술
+
+- Kotlin, Java
+- Spring Boot, Spring Security, Spring webflux, Spring Cloud
+- Spring Data JPA
+- PostgreSQL, MySQL
+- Kafka, gRPC
+
+## 🚀 소개
+
+- 익스피디아 클론 코딩
+- 백엔드 설계에 집중하기 위해 프론트 UI 는 카카오 오븐을 이용한 프로토 타이핑으로 대체함
+
+## 🚀 전체 프로젝트의 구조
+
+- __Gradle Multi module__
+  - 루트 모듈은 expedia-server 와 platform-server 로 나뉘어져있으며 각 모듈 아래 서브 모듈들이 존재하는 형태
+
+> 아키텍처 이미지를 넣어주세요.
+
+## 🚀 팀 컨벤션
+
+- __Style Guide__
+  - Kotlin - [Coding conventions Kotlin](https://kotlinlang.org/docs/coding-conventions.html)
+  - Java - [Google Java Coding Style Guide](https://google.github.io/styleguide/javaguide.html)
+- __Test: 기본 틀은 아래와 같으며 본인이 편한 방향에 따라서 작업 가능__
+  1. 시나리오를 기반으로 실패하는 인수테스트를 작성(fail-acceptance)
+  2. 문서화 테스트를 작성(documentation)
+  3. 실패하는 테스트 케이스 작성(fail-unittest)
+  4. 테스트 케이스를 통과시키기 위한 도메인 로직 작성 (production)
+  5. 테스트 케이스 성공 시키고(success-unittest)
+  6. 인수테스트를 성공 시키기(success-acceptance)
+- __Package: Layered Architectures__
+  - 패키지간 의존성 방향을 한 곳으로 흐르게끔 설계
 
 ## Rule
 
@@ -29,16 +60,6 @@
   - interfaces, application, domain, infrastructure
   - 패키지간 의존성 방향을 한 곳으로 흐르게끔 설계
 
-## Project Structures
-
-> Gradle Multi module 로 구성
-
-- __platform-server__
-  - auth-server
-  - payment-server
-  - message-server
-- __expedia-server__
-  - booking-server
   
 ### Package
 
@@ -88,17 +109,6 @@
     line break
     내용 작성
     ```
-
-## Test
-
-> 기본 틀은 아래와 같으며, 본인이 작업하기 편한 방향으로 진행 가능
-
-1. 시나리오를 기반으로 실패하는 인수테스트를 작성(fail-acceptance)
-2. 문서화 테스트를 작성(documentation)
-3. 실패하는 테스트 케이스 작성(fail-unittest)
-4. 테스트 케이스를 통과시키기 위한 도메인 로직 작성 (production)
-5. 테스트 케이스 성공 시키고(success-unittest)
-6. 인수테스트를 성공 시키기(success-acceptance)
 
 ## Step
 
