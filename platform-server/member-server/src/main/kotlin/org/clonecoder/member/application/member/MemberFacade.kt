@@ -11,11 +11,12 @@ class MemberFacade(
     private val memberService: MemberService
 ) {
     @Transactional
-    fun register(user: MemberCommand.RegisterMember) {
-        memberService.register(user)
+    fun register(member: MemberCommand.RegisterMember) {
+        memberService.register(member)
     }
 
-    fun existsMember(email: String, password: String): Boolean {
-        return memberService.existsByEmailAndPassword(email = email, password = password)
+    @Transactional
+    fun login(member: MemberCommand.LoginRequest): MemberCommand.LoginResponse {
+        return memberService.login(member)
     }
 }

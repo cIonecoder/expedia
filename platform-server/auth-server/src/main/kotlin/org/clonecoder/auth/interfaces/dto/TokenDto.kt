@@ -6,7 +6,6 @@ class TokenDto {
 
     data class IssueRequest(
         val email: String,
-        val password: String
     )
 
     data class PatchRequest(
@@ -17,7 +16,7 @@ class TokenDto {
     data class Response(
         val accessToken: String,
         val refreshToken: String,
-        val email: String,
+        val email: String? = "",
         val status: TokenIssueStatus
     )
 }

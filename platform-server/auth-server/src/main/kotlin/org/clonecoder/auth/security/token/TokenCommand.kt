@@ -4,7 +4,6 @@ class TokenCommand {
 
     data class IssueRequest(
         val email: String,
-        val password: String
     )
 
     data class PatchRequest(

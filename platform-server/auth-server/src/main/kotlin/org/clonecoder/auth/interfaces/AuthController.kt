@@ -23,7 +23,8 @@ class AuthController(
     }
 
     @PutMapping("/token")
-    fun patchToken(@RequestBody request: TokenDto.PatchRequest) {
-        // TODO implementations
+    fun patchToken(@RequestBody request: TokenDto.PatchRequest): TokenDto.Response {
+        val response = tokenFacade.patchTokens(TokenDtoMapper.of(request))
+        return TokenDtoMapper.of(response)
     }
 }

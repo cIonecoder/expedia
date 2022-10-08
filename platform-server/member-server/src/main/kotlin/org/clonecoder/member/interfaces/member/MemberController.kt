@@ -20,4 +20,12 @@ class MemberController(
         val member = MemberDtoMapper.of(request)
         memberFacade.register(member)
     }
+
+    @PostMapping("/login")
+    fun login(
+        @RequestBody @Valid request: MemberDto.LoginRequest
+    ): MemberDto.LoginResponse {
+        val response = memberFacade.login(MemberDtoMapper.of(request))
+        return MemberDtoMapper.of(response)
+    }
 }

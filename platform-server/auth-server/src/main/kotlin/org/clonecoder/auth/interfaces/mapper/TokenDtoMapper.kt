@@ -8,9 +8,12 @@ class TokenDtoMapper {
 
     companion object {
         fun of(request: TokenDto.IssueRequest): TokenCommand.IssueRequest =
-            TokenCommand.IssueRequest(
-                email = request.email,
-                password = request.password,
+            TokenCommand.IssueRequest(email = request.email)
+
+        fun of(request: TokenDto.PatchRequest): TokenCommand.PatchRequest =
+            TokenCommand.PatchRequest(
+                accessToken = request.accessToken,
+                refreshToken = request.refreshToken
             )
 
         fun of(response: TokenResponse): TokenDto.Response =

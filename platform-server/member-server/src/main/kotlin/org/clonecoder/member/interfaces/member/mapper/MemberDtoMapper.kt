@@ -12,5 +12,17 @@ class MemberDtoMapper {
                 email = request.email,
                 password = request.password,
             )
+
+        fun of(request: MemberDto.LoginRequest): MemberCommand.LoginRequest =
+            MemberCommand.LoginRequest(
+                email = request.email,
+                password = request.password,
+            )
+
+        fun of(response: MemberCommand.LoginResponse): MemberDto.LoginResponse =
+            MemberDto.LoginResponse(
+                accessToken = response.accessToken,
+                refreshToken = response.refreshToken
+            )
     }
 }

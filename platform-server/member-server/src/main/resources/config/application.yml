@@ -23,6 +23,12 @@ security:
     token:
       secret-key: expedia-secret-key
       expire-length: 3600000
+
+adapter:
+  auth-server:
+    url: http://localhost:8082
+    issue-token-path: /auth/token
+
 ---
 spring:
   config:

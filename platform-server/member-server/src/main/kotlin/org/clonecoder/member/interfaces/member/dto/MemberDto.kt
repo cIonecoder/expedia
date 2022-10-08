@@ -11,4 +11,16 @@ class MemberDto {
         @Password
         val password: String,
     )
+
+    data class LoginRequest(
+        @Pattern(regexp = "^(.+)@(.+)$")
+        val email: String,
+        @Password
+        val password: String,
+    )
+
+    data class LoginResponse(
+        val accessToken: String,
+        val refreshToken: String
+    )
 }
