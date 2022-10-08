@@ -13,3 +13,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+  # init data
+  sql:
+    init:
+      mode: always
