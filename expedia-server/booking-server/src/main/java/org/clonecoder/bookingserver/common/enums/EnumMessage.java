@@ -3,8 +3,8 @@ package org.clonecoder.bookingserver.common.enums;
 import lombok.Getter;
 
 public enum EnumMessage {
-    /** HTTP_STATUS message */
-    HTTP_SUCCESS                ("성공"),
+    HTTP_SUCCESS      ("성공"),
+    NOT_EXIST_BOOKING ("존재하지않은 예약건입니다.")
     ;
 
     @Getter
