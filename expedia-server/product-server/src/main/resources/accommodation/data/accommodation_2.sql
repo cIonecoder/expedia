@@ -237,7 +237,7 @@ INSERT INTO ACCOMMODATION_ROOM_INFO (ACTIVE,
                                      LAST_MODIFIED_AT,
                                      LAST_MODIFIED_BY)
 VALUES (1,
-        1,
+        2,
         (SELECT MAX(ID) FROM ACCOMMODATION_ROOM),
         NOW(),
         'ADMIN',
