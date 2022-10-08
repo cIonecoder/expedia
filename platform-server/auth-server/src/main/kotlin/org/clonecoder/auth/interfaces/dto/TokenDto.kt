@@ -1,9 +1,11 @@
 package org.clonecoder.auth.interfaces.dto
 
+import org.clonecoder.auth.common.support.NoArg
 import org.clonecoder.auth.security.token.TokenIssueStatus
 
 class TokenDto {
 
+    @NoArg
     data class IssueRequest(
         val email: String,
     )

@@ -53,7 +53,7 @@ class AuthWebClientConfig(
             }
 
         return WebClient.builder()
-            .baseUrl(adapterProperties.authServer.url)
+            .baseUrl(adapterProperties.authServer.getUrl())
             .clientConnector(ReactorClientHttpConnector(httpClient))
             .exchangeStrategies(exchangeStrategies)
             .filter(ExchangeFilterFunction.ofRequestProcessor {

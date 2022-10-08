@@ -1,4 +1,4 @@
-package org.clonecoder.auth.common.redis
+package org.clonecoder.auth.common.support
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.clonecoder.auth.common.exception.RedisClientException

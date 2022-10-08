@@ -35,7 +35,6 @@ subprojects {
         annotation("javax.persistence.Embeddable")
     }
 
-
     dependencies {
         // Kotlin Standard Library
         implementation("org.jetbrains.kotlin:kotlin-reflect")

@@ -10,7 +10,10 @@ class AdapterProperties(
 ) {
 
     data class AuthServer(
-        val url: String,
+        val host: String,
+        val port: String,
         val issueTokenPath: String
-    )
+    ) {
+        fun getUrl() = "http://$host:$port"
+    }
 }

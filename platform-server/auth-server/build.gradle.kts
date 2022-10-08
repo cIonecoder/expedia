@@ -11,5 +11,9 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
 }
 
+noArg {
+    annotation("org.clonecoder.auth.common.support.NoArg")
+}
+
 tasks.jar { enabled = false }
 tasks.bootJar { enabled = true }

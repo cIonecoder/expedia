@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.clonecoder.auth.common.exception.InvalidTokenException
-import org.clonecoder.auth.common.redis.RedisClient
+import org.clonecoder.auth.common.support.RedisClient
 import org.clonecoder.auth.common.properties.JwtProperties
 import org.clonecoder.auth.common.redis.RFK_CACHE_NAME
 import org.clonecoder.auth.common.redis.RFK_KEY
@@ -29,8 +29,6 @@ class JwtTokenProvider(
 
         when (validateToken(accessToken)) {
             true -> {
-                log.info("expired accessToken: $accessToken")
-
                 return TokenResponse(
                     accessToken = accessToken,
                     refreshToken = refreshToken,
@@ -39,6 +37,8 @@ class JwtTokenProvider(
                 )
             }
             false -> {
+                log.info("expired accessToken: $accessToken")
+
                 if (!validateToken(request.refreshToken)) {
                     log.info("expired refreshToken: $refreshToken")
 

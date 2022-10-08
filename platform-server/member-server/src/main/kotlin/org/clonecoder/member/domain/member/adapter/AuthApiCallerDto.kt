@@ -1,5 +1,6 @@
 package org.clonecoder.member.domain.member.adapter
 
+import org.clonecoder.member.common.support.NoArg
 import org.clonecoder.member.domain.member.MemberCommand
 
 class AuthApiCallerDto {
@@ -8,6 +9,7 @@ class AuthApiCallerDto {
         val email: String
     )
 
+    @NoArg
     data class IssueTokensResponse(
         val accessToken: String,
         val refreshToken: String,
