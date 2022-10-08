@@ -97,3 +97,10 @@ subprojects {
 repositories {
     mavenCentral()
 }
+
+// 각 프로젝트에서만 사용하는 의존성 추가
+project(':booking-server') {
+    dependencies {
+        compileOnly project(':product-server')
+    }
+}
