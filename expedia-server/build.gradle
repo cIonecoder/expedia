@@ -62,6 +62,13 @@ subprojects {
         outputs.dir snippetsDir
     }
 
+    task testDocument(type: Test) {
+        useJUnitPlatform()
+        filter {
+            includeTestsMatching "*.documentation.*"
+        }
+    }
+
     asciidoctor {
         inputs.dir snippetsDir
         configurations 'asciidoctorExt'
