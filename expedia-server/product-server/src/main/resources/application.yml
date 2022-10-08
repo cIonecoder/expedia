@@ -5,11 +5,17 @@ spring:
     username: expedia
     password: 1234
     driver-class-name: org.postgresql.Driver
+  # init data
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:accommodation/schema/accommodation.sql
+      data-locations: classpath:accommodation/data/accommodation_1.sql
 
   # JPA
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true

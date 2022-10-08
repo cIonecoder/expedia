@@ -1,2 +1,3 @@
 rootProject.name = 'expedia-server'
 include ':booking-server'
+include ':product-server'
