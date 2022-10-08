@@ -1,4 +1,4 @@
-# docker compose -f docker-compose.yml up -d
+# docker compose -f docker-compose.yml up -d --build
 # docker compose -f docker-compose.yml build --no-cache
 # redis-cli: docker exec -it {containerId} redis-cli
    # keys *
