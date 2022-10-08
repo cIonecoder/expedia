@@ -1,5 +1,6 @@
 package org.clonecoder.member.interfaces.member
 
+import org.clonecoder.member.application.member.MemberFacade
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 import org.clonecoder.member.interfaces.member.mapper.MemberDtoMapper
 import org.springframework.web.bind.annotation.PostMapping
@@ -11,7 +12,7 @@ import javax.validation.Valid
 @RequestMapping("/members")
 @RestController
 class MemberController(
-    private val memberFacade: org.clonecoder.member.application.member.MemberFacade
+    private val memberFacade: MemberFacade
 ) {
     @PostMapping
     fun register(

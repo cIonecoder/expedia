@@ -9,7 +9,6 @@ class AdapterProperties(
     val authServer: AuthServer
 ) {
 
-    @ConfigurationProperties(prefix = "auth-server")
     data class AuthServer(
         val url: String,
         val issueTokenPath: String

@@ -26,7 +26,7 @@ security:
 
 adapter:
   auth-server:
-    url: http://localhost:8082
+    url: expedia-auth:8082
     issue-token-path: /auth/token
 
 ---

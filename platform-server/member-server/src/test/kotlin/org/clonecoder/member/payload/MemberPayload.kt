@@ -1,5 +1,6 @@
 package org.clonecoder.member.payload
 
+import org.clonecoder.member.domain.member.adapter.AuthApiCallerDto
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 
 
@@ -18,5 +19,14 @@ fun memberRegisterFailPayloads(): MemberDto.RegisterRequest {
     return MemberDto.RegisterRequest(
         email = "designjava@naver.com",
         password = invalidPassword
+    )
+}
+
+fun issueTokenPayloads(): AuthApiCallerDto.IssueTokensResponse {
+    return AuthApiCallerDto.IssueTokensResponse(
+        accessToken = "test_accessToken",
+        refreshToken = "test_refreshToken",
+        email = "designjava@naver.com",
+        status = AuthApiCallerDto.TokenResponseStatus.SUCCESS
     )
 }

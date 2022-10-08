@@ -28,17 +28,23 @@ services:
     networks:
       - internal-network
   membrer-server:
-    container_name: member
+    container_name: expedia-member
     build: ../member-server
     ports:
       - "8081:8081"
+    links:
+      - auth-server
     networks:
       - internal-network
   auth-server:
-    container_name: auth
+    container_name: expedia-auth
     build: ../auth-server
     ports:
       - "8082:8082"
+    links:
+      - redis
+    depends_on:
+      - redis
     networks:
       - internal-network
 networks:

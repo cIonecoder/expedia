@@ -1,6 +1,6 @@
 dependencies {
     // modules
-    implementation(project(":member-server"))
+//    implementation(project(":member-server"))
 
     // others
     implementation("org.springframework.boot:spring-boot-starter-security")
