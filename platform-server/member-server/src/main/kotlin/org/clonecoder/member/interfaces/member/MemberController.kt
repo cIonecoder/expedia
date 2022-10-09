@@ -1,6 +1,8 @@
 package org.clonecoder.member.interfaces.member
 
 import org.clonecoder.member.application.member.MemberFacade
+import org.clonecoder.member.common.constant.MEMBER_BASE_URL
+import org.clonecoder.member.common.constant.MEMBER_LOGIN
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 import org.clonecoder.member.interfaces.member.mapper.MemberDtoMapper
 import org.springframework.web.bind.annotation.PostMapping
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
-@RequestMapping("/members")
+@RequestMapping(MEMBER_BASE_URL)
 @RestController
 class MemberController(
     private val memberFacade: MemberFacade
@@ -22,7 +24,7 @@ class MemberController(
         memberFacade.register(member)
     }
 
-    @PostMapping("/login")
+    @PostMapping(MEMBER_LOGIN)
     fun login(
         @RequestBody @Valid request: MemberDto.LoginRequest
     ): MemberDto.LoginResponse {

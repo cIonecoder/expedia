@@ -4,6 +4,8 @@ import io.restassured.RestAssured
 import io.restassured.response.ExtractableResponse
 import io.restassured.response.Response
 import org.assertj.core.api.Assertions.assertThat
+import org.clonecoder.member.common.constant.MEMBER_LOGIN
+import org.clonecoder.member.common.constant.MEMBER_REGISTER
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -13,7 +15,7 @@ internal fun `회원 생성 요청`(member: MemberDto.RegisterRequest): Extracta
         .given().log().all()
         .contentType(MediaType.APPLICATION_JSON_VALUE)
         .body(member)
-        .`when`().post("/members")
+        .`when`().post(MEMBER_REGISTER)
         .then().log().all().extract()
 }
 
@@ -28,7 +30,7 @@ internal fun `로그인 요청`(member: MemberDto.LoginRequest): ExtractableResp
         .given().log().all()
         .contentType(MediaType.APPLICATION_JSON_VALUE)
         .body(member)
-        .`when`().post("/members/login")
+        .`when`().post(MEMBER_LOGIN)
         .then().log().all().extract()
 }
 
