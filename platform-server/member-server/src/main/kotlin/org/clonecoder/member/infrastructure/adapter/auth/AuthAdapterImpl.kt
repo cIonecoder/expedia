@@ -36,8 +36,6 @@ class AuthAdapterImpl(
             log.error("# Fail to IssueTokens: $it")
         }
 
-        log.info("response: ${response.getOrNull()}")
-
         return response.getOrNull() ?: throw IssueTokenException()
     }
 }
