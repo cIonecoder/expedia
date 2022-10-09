@@ -6,8 +6,8 @@ import io.jsonwebtoken.SignatureAlgorithm
 import org.clonecoder.auth.common.exception.InvalidTokenException
 import org.clonecoder.auth.common.support.RedisClient
 import org.clonecoder.auth.common.properties.JwtProperties
-import org.clonecoder.auth.common.redis.RFK_CACHE_NAME
-import org.clonecoder.auth.common.redis.RFK_KEY
+import org.clonecoder.auth.common.constant.RFK_CACHE_NAME
+import org.clonecoder.auth.common.constant.RFK_KEY
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.util.Date

@@ -51,6 +51,9 @@ subprojects {
         // Google
         implementation("com.google.guava:guava:31.1-jre")
 
+        // apache
+        implementation("org.apache.commons:commons-lang3")
+
         // Kafka
 
         // Databasse
