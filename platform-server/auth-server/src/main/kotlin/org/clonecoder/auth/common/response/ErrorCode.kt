@@ -11,7 +11,7 @@ enum class ErrorCode(
     // Well known Errors
     BAD_REQUEST(HttpStatus.BAD_REQUEST, "-1004", "Bad Request"),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "-1005", "Internal Server Error"),
-
+    VALIDATION(HttpStatus.BAD_REQUEST, "-1006", "Validation Error"),
 
     // Custom Errors
     INVALID_TOKEN(HttpStatus.BAD_REQUEST, "-2001", "Invalid Token"),

@@ -1,5 +1,7 @@
 package org.clonecoder.auth.common.response
 
+import org.springframework.validation.Errors
+
 
 class CommonResponse<T> {
 
@@ -34,12 +36,12 @@ class CommonResponse<T> {
             }
         }
 
-        fun fail(errorCode: ErrorCode, errorFields: List<ErrorField>): CommonResponse<*> {
+        fun fail(errorCode: ErrorCode, errors: Errors?): CommonResponse<*> {
             return CommonResponse<String>().apply {
                 result = Result.FAIL
                 this.message = errorCode.message
                 this.errorCode = errorCode.code
-                this.errorFields = errorFields
+                this.errorFields = ErrorField.of(errors)
             }
         }
 

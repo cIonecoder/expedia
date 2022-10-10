@@ -26,6 +26,13 @@ class ExceptionHandlerAdvice {
             .body(CommonResponse.fail(e.errorCode))
     }
 
+    @ExceptionHandler(ValidationException::class)
+    fun validationException(e: ValidationException): ResponseEntity<CommonResponse<*>> {
+        return ResponseEntity
+            .status(ErrorCode.VALIDATION.status)
+            .body(CommonResponse.fail(ErrorCode.VALIDATION, e.errors))
+    }
+
     @ExceptionHandler(Exception::class)
     fun exception(e: Exception): ResponseEntity<CommonResponse<*>> {
         log.error("Not Defined or Not Handled Exception occur", e)
