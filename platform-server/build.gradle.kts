@@ -9,6 +9,7 @@ plugins {
 
 java.sourceCompatibility = JavaVersion.VERSION_11
 tasks.jar { enabled = false }
+tasks.bootJar { enabled = false }
 
 allprojects {
     group = "org.clonecoder"
@@ -34,18 +35,24 @@ subprojects {
         annotation("javax.persistence.Embeddable")
     }
 
-
     dependencies {
         // Kotlin Standard Library
         implementation("org.jetbrains.kotlin:kotlin-reflect")
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+        // Jackson
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
         // Spring Boot Starter
         implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-starter-webflux")
         implementation("org.springframework.boot:spring-boot-starter-validation")
 
         // Google
         implementation("com.google.guava:guava:31.1-jre")
+
+        // apache
+        implementation("org.apache.commons:commons-lang3")
 
         // Kafka
 
@@ -53,6 +60,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         runtimeOnly("mysql:mysql-connector-java")
         runtimeOnly("com.h2database:h2")
+//        runtimeOnly("org.postgresql:postgresql")
 
         // Spring Rest Docs
         testImplementation("org.springframework.restdocs:spring-restdocs-restassured")

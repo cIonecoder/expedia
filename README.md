@@ -25,7 +25,6 @@
   - 인수 테스트 작성 필수 
 - __DDD 를 지향__
 - __패키지 구성__
-  - 3 layer architecture 지향
   - interfaces, application, domain, infrastructure
   - 패키지간 의존성 방향을 한 곳으로 흐르게끔 설계
 
