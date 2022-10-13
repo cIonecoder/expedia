@@ -8,6 +8,7 @@ import org.clonecoder.auth.common.support.RedisClient
 import org.clonecoder.auth.common.properties.JwtProperties
 import org.clonecoder.auth.common.constant.RFK_CACHE_NAME
 import org.clonecoder.auth.common.constant.RFK_KEY
+import org.clonecoder.auth.common.response.ErrorCode
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.util.Date
@@ -58,7 +59,7 @@ class JwtTokenProvider(
                 )
 
                 if (refreshToken != inMemoryRefreshToken) {
-                    throw InvalidTokenException("Refresh")
+                    throw InvalidTokenException(ErrorCode.INVALID_REFRESH_TOKEN)
                 }
 
                 return issueTokens(TokenIssueSpec(email = payload))

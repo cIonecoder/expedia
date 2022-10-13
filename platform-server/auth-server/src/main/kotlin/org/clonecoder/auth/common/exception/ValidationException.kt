@@ -2,8 +2,9 @@ package org.clonecoder.auth.common.exception
 
 import org.clonecoder.auth.common.response.ErrorCode
 import org.springframework.validation.Errors
+import java.lang.RuntimeException
 
 class ValidationException(
-    errorCode: ErrorCode = ErrorCode.VALIDATION,
+    val errorCode: ErrorCode = ErrorCode.VALIDATION,
     val errors: Errors? = null
-): Exception(errorCode.message)
+): RuntimeException(errorCode.message)

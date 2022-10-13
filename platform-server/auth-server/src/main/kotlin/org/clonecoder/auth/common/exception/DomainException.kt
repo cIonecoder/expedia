@@ -1,7 +1,8 @@
 package org.clonecoder.auth.common.exception
 
 import org.clonecoder.auth.common.response.ErrorCode
+import java.lang.RuntimeException
 
-class RedisClientException(
-    val errorCode: ErrorCode = ErrorCode.REDIS_CLIENT,
+open class DomainException(
+    open val errorCode: ErrorCode = ErrorCode.DOMAIN
 ): RuntimeException(errorCode.message)
