@@ -27,8 +27,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.clonecoder.bookingserver.param.ParamDto.예약_생성_정보_셋팅;
 
 @SpringBootTest
-@ComponentScan(basePackages = {"org.clonecoder.bookingserver", "org.clonecoder.productserver"})
-@EntityScan(basePackages = {"org.clonecoder.bookingserver", "org.clonecoder.productserver"})
 @Sql({"classpath:accommodation/schema/accommodation.sql", "classpath:accommodation/data/accommodation_1.sql"})
 @Transactional
 class BookingServiceTest {

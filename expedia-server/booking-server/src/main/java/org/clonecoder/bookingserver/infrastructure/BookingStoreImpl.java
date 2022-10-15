@@ -1,10 +1,10 @@
 package org.clonecoder.bookingserver.infrastructure;
 
-import org.clonecoder.productserver.domain.accommodation.AccommodationService;
 import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingStore;
+import org.clonecoder.productserver.domain.accommodation.AccommodationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
