@@ -1,7 +1,7 @@
 package org.clonecoder.member.interfaces.member
 
 import org.clonecoder.member.application.member.MemberFacade
-import org.clonecoder.member.common.constant.MEMBER_BASE_URL
+import org.clonecoder.core.common.constant.MEMBER_BASE_URL
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 import org.clonecoder.member.interfaces.member.mapper.MemberDtoMapper
 import org.springframework.web.bind.annotation.PostMapping

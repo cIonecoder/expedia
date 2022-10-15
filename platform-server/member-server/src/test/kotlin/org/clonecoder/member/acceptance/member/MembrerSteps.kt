@@ -4,7 +4,7 @@ import io.restassured.RestAssured
 import io.restassured.response.ExtractableResponse
 import io.restassured.response.Response
 import org.assertj.core.api.Assertions.assertThat
-import org.clonecoder.member.common.constant.MEMBER_REGISTER
+import org.clonecoder.core.common.constant.MEMBER_REGISTER
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType

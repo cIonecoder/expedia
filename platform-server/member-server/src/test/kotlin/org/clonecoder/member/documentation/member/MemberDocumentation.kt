@@ -6,7 +6,7 @@ import io.restassured.response.ExtractableResponse
 import io.restassured.response.Response
 import io.restassured.specification.RequestSpecification
 import org.assertj.core.api.Assertions.assertThat
-import org.clonecoder.member.common.constant.MEMBER_REGISTER
+import org.clonecoder.core.common.constant.MEMBER_REGISTER
 import org.clonecoder.member.payload.memberRegisterSuccessPayloads
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus

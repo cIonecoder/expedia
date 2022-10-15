@@ -1,4 +1,4 @@
-package org.clonecoder.member.common.constant
+package org.clonecoder.core.common.constant
 
 // Member
 const val MEMBER_BASE_URL = "/members"
