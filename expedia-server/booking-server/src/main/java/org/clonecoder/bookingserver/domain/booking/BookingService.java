@@ -1,5 +1,6 @@
 package org.clonecoder.bookingserver.domain.booking;
 
+import com.clonecoder.productserver.domain.accommodation.AccommodationService;
 import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingService {
     private final BookingStore bookingStore;
+    private AccommodationService accommodationService;
 
     /**
      * 예약 저장
@@ -34,7 +36,11 @@ public class BookingService {
             bookingGuestsList.add(bookingGuests);
         });
 
+        /* TODO 재고 */
+        accommodationService.stock();
+
         bookingStore.saveBookingGuests(bookingGuestsList);
+
         return resultBooking;
     }
 }
