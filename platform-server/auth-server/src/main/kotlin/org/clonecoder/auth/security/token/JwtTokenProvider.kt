@@ -3,12 +3,12 @@ package org.clonecoder.auth.security.token
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
-import org.clonecoder.auth.common.exception.InvalidTokenException
+import org.clonecoder.core.common.exception.InvalidTokenException
 import org.clonecoder.auth.common.support.RedisClient
 import org.clonecoder.auth.common.properties.JwtProperties
-import org.clonecoder.auth.common.constant.RFK_CACHE_NAME
-import org.clonecoder.auth.common.constant.RFK_KEY
-import org.clonecoder.auth.common.response.ErrorCode
+import org.clonecoder.core.common.constant.RFK_CACHE_NAME
+import org.clonecoder.core.common.constant.RFK_KEY
+import org.clonecoder.core.common.response.ErrorCode
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.util.Date

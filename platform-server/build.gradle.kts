@@ -58,6 +58,7 @@ subprojects {
 
         // Databasse
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        implementation("org.redisson:redisson:3.17.6")
         runtimeOnly("mysql:mysql-connector-java")
         runtimeOnly("com.h2database:h2")
         runtimeOnly("org.postgresql:postgresql")

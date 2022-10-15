@@ -1,6 +1,6 @@
 package org.clonecoder.member.interfaces.member.mapper
 
-import org.clonecoder.member.domain.member.MemberCommand
+import org.clonecoder.core.domain.member.MemberCommand
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 
 

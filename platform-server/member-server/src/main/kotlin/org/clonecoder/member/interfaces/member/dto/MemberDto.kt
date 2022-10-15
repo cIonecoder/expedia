@@ -1,6 +1,6 @@
 package org.clonecoder.member.interfaces.member.dto
 
-import org.clonecoder.member.interfaces.validator.Password
+import org.clonecoder.core.common.validator.Password
 import javax.validation.constraints.Pattern
 
 class MemberDto {

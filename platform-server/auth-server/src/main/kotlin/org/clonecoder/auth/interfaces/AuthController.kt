@@ -1,7 +1,7 @@
 package org.clonecoder.auth.interfaces
 
 import org.clonecoder.auth.application.TokenFacade
-import org.clonecoder.auth.common.response.CommonResponse
+import org.clonecoder.core.common.response.CommonResponse
 import org.clonecoder.auth.interfaces.dto.TokenDto
 import org.clonecoder.auth.interfaces.mapper.TokenDtoMapper
 import org.springframework.web.bind.annotation.PostMapping

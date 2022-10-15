@@ -5,8 +5,8 @@ import org.clonecoder.auth.security.token.TokenCommand
 import org.clonecoder.auth.security.token.TokenIssueSpec
 import org.clonecoder.auth.security.token.TokenPatchSpec
 import org.clonecoder.auth.security.token.TokenResponse
-import org.clonecoder.member.domain.member.MemberCommand
-import org.clonecoder.member.domain.member.MemberService
+import org.clonecoder.core.domain.member.MemberCommand
+import org.clonecoder.core.domain.member.MemberService
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Transactional
 

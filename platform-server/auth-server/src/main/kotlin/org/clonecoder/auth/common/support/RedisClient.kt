@@ -1,7 +1,7 @@
 package org.clonecoder.auth.common.support
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.clonecoder.auth.common.exception.RedisClientException
+import org.clonecoder.core.common.exception.RedisClientException
 import org.redisson.Redisson
 import org.redisson.api.RBucket
 import org.redisson.api.RLock
