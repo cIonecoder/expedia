@@ -15,16 +15,13 @@ services:
       - "6379:6379"
     command: redis-server
   db:
-    image: mysql:8.0
-    container_name: mysql
+    image: postgres
+    container_name: postgres
     restart: always
     ports:
-      - "3306:3306"
+      - "5432:5432"
     environment:
-      MYSQL_ROOT_PASSWORD: 1234
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
+      POSTGRES_PASSWORD: 1234
     networks:
       - internal-network
   membrer-server:

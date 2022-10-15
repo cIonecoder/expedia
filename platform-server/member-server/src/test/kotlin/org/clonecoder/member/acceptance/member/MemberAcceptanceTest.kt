@@ -1,11 +1,8 @@
 package org.clonecoder.member.acceptance.member
 
 import org.clonecoder.member.acceptance.AcceptanceTest
-import org.clonecoder.member.interfaces.member.dto.MemberDto
-import org.clonecoder.member.payload.memberLoginSuccessPayloads
 import org.clonecoder.member.payload.memberRegisterFailPayloads
 import org.clonecoder.member.payload.memberRegisterSuccessPayloads
-import org.clonecoder.member.payload.validPassword
 import org.clonecoder.member.support.DatabaseCleanup
 import org.springframework.boot.web.server.LocalServerPort
 

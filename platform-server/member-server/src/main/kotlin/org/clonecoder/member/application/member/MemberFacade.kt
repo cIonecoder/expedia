@@ -14,9 +14,4 @@ class MemberFacade(
     fun register(member: MemberCommand.RegisterMember) {
         memberService.register(member)
     }
-
-    @Transactional
-    fun login(member: MemberCommand.LoginRequest): MemberCommand.LoginResponse {
-        return memberService.login(member)
-    }
 }

@@ -60,7 +60,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         runtimeOnly("mysql:mysql-connector-java")
         runtimeOnly("com.h2database:h2")
-//        runtimeOnly("org.postgresql:postgresql")
+        runtimeOnly("org.postgresql:postgresql")
 
         // Spring Rest Docs
         testImplementation("org.springframework.restdocs:spring-restdocs-restassured")

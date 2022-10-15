@@ -1,7 +1,5 @@
 package org.clonecoder.member.domain.member
 
-import org.clonecoder.member.domain.member.adapter.AuthApiCallerDto
-
 class MemberCommand {
 
     data class RegisterMember(
@@ -21,10 +19,6 @@ class MemberCommand {
         fun toEntity() = Member(
             email = email,
             password = password
-        )
-
-        fun toIssueTokenRequest() = AuthApiCallerDto.IssueTokensRequest(
-            email = email
         )
     }
 
