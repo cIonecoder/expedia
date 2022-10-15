@@ -23,13 +23,6 @@ fun memberRegisterFailPayloads(): MemberDto.RegisterRequest {
     )
 }
 
-fun memberLoginSuccessPayloads(): MemberDto.LoginRequest {
-    return MemberDto.LoginRequest(
-        email = email,
-        password = validPassword
-    )
-}
-
 fun issueTokenPayloads(): AuthApiCallerDto.IssueTokensResponse {
     return AuthApiCallerDto.IssueTokensResponse(
         accessToken = accessToken,

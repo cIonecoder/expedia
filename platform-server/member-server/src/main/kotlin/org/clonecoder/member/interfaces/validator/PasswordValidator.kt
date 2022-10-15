@@ -2,8 +2,20 @@ package org.clonecoder.member.interfaces.validator
 
 import org.springframework.stereotype.Component
 import java.text.MessageFormat
+import javax.validation.Constraint
 import javax.validation.ConstraintValidator
 import javax.validation.ConstraintValidatorContext
+import javax.validation.Payload
+import kotlin.reflect.KClass
+
+@Target(AnnotationTarget.FIELD)
+@Retention
+@Constraint(validatedBy = [PasswordValidator::class])
+annotation class Password(
+    val message: String = "",
+    val groups: Array<KClass<*>> = [],
+    val payload: Array<KClass<out Payload>> = []
+)
 
 @Component
 class PasswordValidator: ConstraintValidator<Password, String> {

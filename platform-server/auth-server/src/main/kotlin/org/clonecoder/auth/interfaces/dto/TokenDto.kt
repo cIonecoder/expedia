@@ -1,11 +1,16 @@
 package org.clonecoder.auth.interfaces.dto
 
 import org.clonecoder.auth.security.token.TokenIssueStatus
+import org.clonecoder.member.interfaces.validator.Password
+import javax.validation.constraints.Pattern
 
 class TokenDto {
 
     data class IssueRequest(
+        @Pattern(regexp = "^(.+)@(.+)$")
         val email: String,
+        @Password
+        val password: String
     )
 
     data class PatchRequest(

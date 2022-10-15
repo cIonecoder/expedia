@@ -42,19 +42,6 @@ internal class MemberServiceTest: DescribeSpec() {
                 assertThrows<DuplicatedEmailException> { memberService.register(duplicatedMember) }
             }
         }
-
-        describe("로그인") {
-            val validMember = MemberCommand.LoginRequest(email = email, password = validPassword)
-
-            it("회원이 존재하면 로그인 성공") {
-                val loginMember = withContext(Dispatchers.IO) {
-                    memberService.login(validMember)
-                }
-
-                assertThat(loginMember.accessToken).isEqualTo(accessToken)
-                assertThat(loginMember.refreshToken).isEqualTo(refreshToken)
-            }
-        }
     }
 
     override fun beforeEach(testCase: TestCase) {
