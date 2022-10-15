@@ -16,3 +16,4 @@ pluginManagement {
 
 rootProject.name = "platform-server"
 include("auth-server")
+include("member-server")
