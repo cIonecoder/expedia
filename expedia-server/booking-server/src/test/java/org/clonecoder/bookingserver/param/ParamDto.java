@@ -20,7 +20,7 @@ public final class ParamDto {
     private static void 예약_정보_셋팅(RequestBookingDto.saveDto requestBookingSaveDto) {
         BookingDto bookingDto = new BookingDto();
         bookingDto.setBookingNo("A25BD-20220928");
-        bookingDto.setAccommodationRoomId(9L);
+        bookingDto.setAccommodationRoomId(1L);
         bookingDto.setBookingUserId("test1234");
         bookingDto.setBookingLastName("KIM");
         bookingDto.setBookingFirstName("SEOHAE");

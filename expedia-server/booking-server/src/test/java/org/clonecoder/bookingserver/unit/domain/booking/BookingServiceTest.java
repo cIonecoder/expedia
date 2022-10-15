@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -26,8 +27,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.clonecoder.bookingserver.param.ParamDto.예약_생성_정보_셋팅;
 
 @SpringBootTest
-@ComponentScan(basePackages = {"com.clonecoder.productserver"})
-@EntityScan(basePackages = {"com.clonecoder.productserver"})
+@ComponentScan(basePackages = {"org.clonecoder.bookingserver", "org.clonecoder.productserver"})
+@EntityScan(basePackages = {"org.clonecoder.bookingserver", "org.clonecoder.productserver"})
+@Sql({"classpath:accommodation/schema/accommodation.sql", "classpath:accommodation/data/accommodation_1.sql"})
 @Transactional
 class BookingServiceTest {
     @Autowired
