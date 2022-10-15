@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingService {
     private final BookingStore bookingStore;
-    private AccommodationService accommodationService;
 
     /**
      * 예약 저장
@@ -37,7 +36,7 @@ public class BookingService {
         });
 
         /* TODO 재고 */
-        accommodationService.stock();
+        bookingStore.stock(booking.getAccommodationRoomId());
 
         bookingStore.saveBookingGuests(bookingGuestsList);
 

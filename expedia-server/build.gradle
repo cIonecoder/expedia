@@ -102,5 +102,6 @@ repositories {
 project(':booking-server') {
     dependencies {
         compileOnly project(':product-server')
+        testCompileOnly project(':product-server')
     }
 }

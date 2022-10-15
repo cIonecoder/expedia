@@ -1,9 +1,9 @@
 package org.clonecoder.bookingserver.unit.domain.booking;
 
-import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
+import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.clonecoder.bookingserver.infrastructure.BookingGuestsRepository;
 import org.clonecoder.bookingserver.infrastructure.BookingRepository;
 import org.clonecoder.bookingserver.interfaces.dto.BookingDto;
@@ -12,7 +12,9 @@ import org.clonecoder.bookingserver.interfaces.dto.RequestBookingDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -24,6 +26,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.clonecoder.bookingserver.param.ParamDto.예약_생성_정보_셋팅;
 
 @SpringBootTest
+@ComponentScan(basePackages = {"com.clonecoder.productserver"})
+@EntityScan(basePackages = {"com.clonecoder.productserver"})
 @Transactional
 class BookingServiceTest {
     @Autowired

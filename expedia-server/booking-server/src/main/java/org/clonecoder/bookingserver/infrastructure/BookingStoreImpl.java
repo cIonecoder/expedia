@@ -1,5 +1,6 @@
 package org.clonecoder.bookingserver.infrastructure;
 
+import com.clonecoder.productserver.domain.accommodation.AccommodationService;
 import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
@@ -13,6 +14,7 @@ import java.util.List;
 public class BookingStoreImpl implements BookingStore {
     private final BookingRepository bookingRepository;
     private final BookingGuestsRepository bookingGuestsRepository;
+    private final AccommodationService accommodationService;
 
     /**
      * 예약 저장
@@ -28,5 +30,14 @@ public class BookingStoreImpl implements BookingStore {
      */
     public void saveBookingGuests(List<BookingGuests> bookingGuests) {
         bookingGuestsRepository.saveAll(bookingGuests);
+    }
+
+    /**
+     * 예약건에 대한 재고 설정
+     * @param accommodationRoomId
+     */
+    @Override
+    public void stock(Long accommodationRoomId) {
+        accommodationService.stock(accommodationRoomId);
     }
 }

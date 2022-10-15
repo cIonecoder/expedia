@@ -23,6 +23,7 @@ public class AccommodationRoom {
     private String roomType;
     private String roomName;
     private int maxEntranceCnt;
+    private int stock;
 
     private String lastModifiedBy;
     private LocalDateTime lastModifiedAt;

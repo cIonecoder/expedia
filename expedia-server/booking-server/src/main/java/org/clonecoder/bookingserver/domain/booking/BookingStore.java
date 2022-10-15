@@ -12,4 +12,5 @@ import java.util.List;
 public interface BookingStore {
     Booking saveBooking(Booking booking);
     void saveBookingGuests(List<BookingGuests> bookingGuests);
+    void stock(Long accommodationRoomId);
 }
