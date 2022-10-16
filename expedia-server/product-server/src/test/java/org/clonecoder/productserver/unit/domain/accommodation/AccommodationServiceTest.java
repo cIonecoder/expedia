@@ -18,7 +18,6 @@ import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@Transactional
 @Sql({"classpath:accommodation/schema/accommodation.sql", "classpath:accommodation/data/accommodation_1.sql"})
 class AccommodationServiceTest {
     @Autowired

@@ -15,12 +15,12 @@ public class AccommodationService {
 
     @RedissonLock(key = "accommodationRoomId")
     public void stockDecrease(Long accommodationRoomId) {
-        log.info("Redission lock test");
-//        AccommodationRoom accommodationRoom = accommodationStore.getAccommodationRoom(accommodationRoomId);
-//        log.info("stock() : " + accommodationRoom.getStock());
-//
-//        accommodationRoom.stockDecrease();
-//
-//        log.info("decrease after stock() : " + accommodationRoom.getStock());
+        log.info("Thread Name : " + Thread.currentThread().getName());
+
+        AccommodationRoom accommodationRoom = accommodationStore.getAccommodationRoom(accommodationRoomId);
+        log.info("stock() : " + accommodationRoom.getStock());
+
+        accommodationRoom.stockDecrease();
+        log.info("decrease after stock() : " + accommodationRoom.getStock());
     }
 }
