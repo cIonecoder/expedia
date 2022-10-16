@@ -3,7 +3,7 @@ package org.clonecoder.auth.security.token
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
-import org.clonecoder.core.common.exception.InvalidTokenException
+import org.clonecoder.core.common.exception.domain.InvalidTokenException
 import org.clonecoder.auth.common.support.RedisClient
 import org.clonecoder.auth.common.properties.JwtProperties
 import org.clonecoder.core.common.constant.RFK_CACHE_NAME

@@ -15,7 +15,6 @@ enum class ErrorCode(
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "W1005", "Internal Server Error", Level.ERROR),
 
     // Custom Errors
-    VALIDATION(HttpStatus.BAD_REQUEST, "C1001", "Validation Error"),
     INVALID_TOKEN(HttpStatus.BAD_REQUEST, "C1002", "Invalid Token"),
     INVALID_ACCESS_TOKEN(HttpStatus.BAD_REQUEST, "C1003", "Invalid Access Token"),
     INVALID_REFRESH_TOKEN(HttpStatus.BAD_REQUEST, "C1004", "Invalid Refresh Token"),
@@ -25,5 +24,7 @@ enum class ErrorCode(
 
     // Hierarchy
     DOMAIN(HttpStatus.BAD_REQUEST, "H1001", "Domain Layer Error"),
+    CONVERT(HttpStatus.BAD_REQUEST, "H1002", "Convert Error"),
+    VALIDATION(HttpStatus.BAD_REQUEST, "H1003", "Validation Error"),
     ;
 }

@@ -24,7 +24,7 @@ class MemberController(
         bindingResult: BindingResult
     ): CommonResponse<*> {
         if (bindingResult.hasErrors()) {
-            throw ValidationException()
+            throw ValidationException(errors = bindingResult)
         }
         val member = MemberDtoMapper.of(request)
         memberFacade.register(member)

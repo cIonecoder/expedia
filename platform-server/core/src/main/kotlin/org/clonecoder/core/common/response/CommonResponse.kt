@@ -5,11 +5,11 @@ import org.springframework.validation.Errors
 
 class CommonResponse<T> {
 
-    private var result: Result? = null
-    private var data: T? = null
-    private var message: String? = null
-    private var errorCode: String? = null
-    private var errorFields: List<ErrorField>? = emptyList()
+    var result: Result? = null
+    var data: T? = null
+    var message: String? = null
+    var errorCode: String? = null
+    var errorFields: List<ErrorField>? = emptyList()
 
     enum class Result {
         SUCCESS, FAIL

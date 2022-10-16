@@ -1,14 +1,15 @@
 package org.clonecoder.core.common.response
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import org.apache.commons.lang3.StringUtils
 import org.springframework.validation.Errors
 import java.util.*
 import java.util.stream.Collectors
 
 class ErrorField {
-    private var field: String? = null
-    private var value: String? = null
-    private var reason: String? = null
+    var field: String? = null
+    var value: String? = null
+    var reason: String? = null
 
     companion object {
         fun of(errors: Errors?): List<ErrorField> {

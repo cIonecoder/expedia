@@ -1,7 +1,7 @@
 package org.clonecoder.core.domain.member
 
-import org.clonecoder.core.common.exception.DuplicatedEmailException
-import org.clonecoder.core.common.exception.NotExistMemberException
+import org.clonecoder.core.common.exception.domain.DuplicatedEmailException
+import org.clonecoder.core.common.exception.domain.NotExistMemberException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

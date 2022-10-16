@@ -9,7 +9,7 @@ import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import io.mockk.just
-import org.clonecoder.core.common.exception.DuplicatedEmailException
+import org.clonecoder.core.common.exception.domain.DuplicatedEmailException
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.extension.ExtendWith
 

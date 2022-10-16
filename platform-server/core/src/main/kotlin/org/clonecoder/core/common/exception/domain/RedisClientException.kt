@@ -1,4 +1,4 @@
-package org.clonecoder.core.common.exception
+package org.clonecoder.core.common.exception.domain
 
 import org.clonecoder.core.common.response.ErrorCode
 

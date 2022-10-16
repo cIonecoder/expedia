@@ -1,11 +1,8 @@
 package org.clonecoder.core.common.response
 
 import org.apache.commons.lang3.exception.ExceptionUtils
+import org.clonecoder.core.common.exception.ConvertException
 import org.clonecoder.core.common.exception.DomainException
-import org.clonecoder.core.common.exception.DuplicatedEmailException
-import org.clonecoder.core.common.exception.InvalidTokenException
-import org.clonecoder.core.common.exception.NotExistMemberException
-import org.clonecoder.core.common.exception.RedisClientException
 import org.clonecoder.core.common.exception.ValidationException
 import org.slf4j.LoggerFactory
 import org.slf4j.event.Level
@@ -18,32 +15,8 @@ class ExceptionHandlerAdvice {
 
     private val log = LoggerFactory.getLogger(this::class.java)
 
-    @ExceptionHandler(NotExistMemberException::class)
-    fun notExistMemberException(e: NotExistMemberException): ResponseEntity<CommonResponse<*>> {
-        printLog(e.errorCode, ExceptionUtils.getStackTrace(e))
-        return ResponseEntity
-            .status(ErrorCode.BAD_REQUEST.status)
-            .body(CommonResponse.fail(e.errorCode))
-    }
-
-    @ExceptionHandler(DuplicatedEmailException::class)
-    fun duplicatedEmailException(e: DuplicatedEmailException): ResponseEntity<CommonResponse<*>> {
-        printLog(e.errorCode, ExceptionUtils.getStackTrace(e))
-        return ResponseEntity
-            .status(ErrorCode.BAD_REQUEST.status)
-            .body(CommonResponse.fail(e.errorCode))
-    }
-
-    @ExceptionHandler(RedisClientException::class)
-    fun redisClientException(e: RedisClientException): ResponseEntity<CommonResponse<*>> {
-        printLog(e.errorCode, ExceptionUtils.getStackTrace(e))
-        return ResponseEntity
-            .status(ErrorCode.BAD_REQUEST.status)
-            .body(CommonResponse.fail(e.errorCode))
-    }
-
-    @ExceptionHandler(InvalidTokenException::class)
-    fun invalidTokenException(e: InvalidTokenException): ResponseEntity<CommonResponse<*>> {
+    @ExceptionHandler(ConvertException::class)
+    fun convertException(e: ConvertException): ResponseEntity<CommonResponse<*>> {
         printLog(e.errorCode, ExceptionUtils.getStackTrace(e))
         return ResponseEntity
             .status(e.errorCode.status)
@@ -54,16 +27,16 @@ class ExceptionHandlerAdvice {
     fun validationException(e: ValidationException): ResponseEntity<CommonResponse<*>> {
         printLog(e.errorCode, ExceptionUtils.getStackTrace(e))
         return ResponseEntity
-            .status(ErrorCode.VALIDATION.status)
-            .body(CommonResponse.fail(ErrorCode.VALIDATION, e.errors))
+            .status(e.errorCode.status)
+            .body(CommonResponse.fail(e.errorCode, e.errors))
     }
 
     @ExceptionHandler(DomainException::class)
-    fun domainException(e: DomainException): ResponseEntity<CommonResponse<*>> {
+    fun domainException(e: DomainException): ResponseEntity<*> {
         printLog(e.errorCode, ExceptionUtils.getStackTrace(e))
         return ResponseEntity
-            .status(ErrorCode.INTERNAL_SERVER_ERROR.status)
-            .body(CommonResponse.fail(ErrorCode.INTERNAL_SERVER_ERROR))
+            .status(e.errorCode.status)
+            .body(CommonResponse.fail(e.errorCode))
     }
 
     @ExceptionHandler(Exception::class)
