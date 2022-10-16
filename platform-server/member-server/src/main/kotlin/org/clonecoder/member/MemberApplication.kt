@@ -18,6 +18,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 class MemberApplication
 
 fun main(args: Array<String>) {
-    System.setProperty("spring.profiles.default", "local")
+//    System.setProperty("spring.profiles.default", "local")
     runApplication<MemberApplication>(*args)
 }

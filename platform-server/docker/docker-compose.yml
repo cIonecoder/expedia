@@ -3,6 +3,12 @@
 # redis-cli: docker exec -it {containerId} redis-cli
    # keys *
    # get key {keyName}
+# postgresql-cli
+  # psql -U expedia -d expedia-platform-db
+  # CREATE USER expedia PASSWORD '1234' SUPERUSER;
+  # ALTER USER expedia CREATEDB;
+  # CREATE DATABASE expedia-platform-db WITH OWNER expedia ENCODING 'UTF8';
+  # GRANT ALL PRIVILEGES ON DATABASE expedia-platform-db TO expedia;
 version: "3.9"
 
 services:
@@ -16,11 +22,13 @@ services:
     command: redis-server
   db:
     image: postgres
-    container_name: postgres
+    container_name: expedia-postgres
     restart: always
     ports:
       - "5432:5432"
     environment:
+      POSTGRES_DB: expedia-platform-db
+      POSTGRES_USER: expedia
       POSTGRES_PASSWORD: 1234
     networks:
       - internal-network

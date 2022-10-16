@@ -14,7 +14,6 @@ import org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.do
 import org.springframework.test.context.ActiveProfiles
 
 
-@ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(RestDocumentationExtension::class)
 internal class Documentation {

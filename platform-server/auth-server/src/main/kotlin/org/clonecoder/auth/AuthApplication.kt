@@ -20,6 +20,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 class AuthApplication
 
 fun main(args: Array<String>) {
-    System.setProperty("spring.profiles.default", "local")
+//    System.setProperty("spring.profiles.default", "local")
     runApplication<AuthApplication>(*args)
 }

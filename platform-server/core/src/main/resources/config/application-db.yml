@@ -3,10 +3,11 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:postgresql://postgres:5432/expedia-platform-db
-    username: expedia
-    password: 1234
-    driver-class-name: org.postgresql.Driver
+    hikari:
+      jdbc-url: "jdbc:postgresql://192.168.144.1:5432/expedia-platform-db"
+      driver-class-name: org.postgresql.Driver
+      username: expedia
+      password: 1234
   sql:
     init:
       mode: always
