@@ -16,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingFacade {
     private final BookingService bookingService;
+    private final RedissonLockFacade redissonLockFacade;
 
     /**
      * 예약 저장
@@ -27,6 +28,10 @@ public class BookingFacade {
     public Long saveBooking(BookingCommand bookingCommand, List<BookingGuestsCommand> bookingGuestsCommandList) {
         /* 예약 등록 */
         Booking resultBooking = bookingService.saveBooking(bookingCommand, bookingGuestsCommandList);
+
+        /* 예약건에 대한 재고 감소 */
+        redissonLockFacade.accommodationRoomStockDecrease(resultBooking.getAccommodationRoomId());
+
         return resultBooking.getId();
     }
 }

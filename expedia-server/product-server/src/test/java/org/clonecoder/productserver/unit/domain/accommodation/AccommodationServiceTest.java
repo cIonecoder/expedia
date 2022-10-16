@@ -28,7 +28,7 @@ class AccommodationServiceTest {
         Long targetIdx = all.get(0).getId();
 
         // given
-        accommodationService.stock(targetIdx);
+        accommodationService.accommodationRoomStockDecrease(targetIdx);
 
         // when
 

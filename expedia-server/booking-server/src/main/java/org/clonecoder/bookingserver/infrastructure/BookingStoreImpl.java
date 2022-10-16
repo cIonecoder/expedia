@@ -37,7 +37,7 @@ public class BookingStoreImpl implements BookingStore {
      * @param accommodationRoomId
      */
     @Override
-    public void stock(Long accommodationRoomId) {
-        accommodationService.stock(accommodationRoomId);
+    public void accommodationRoomStockDecrease(Long accommodationRoomId) {
+        accommodationService.accommodationRoomStockDecrease(accommodationRoomId);
     }
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class AccommodationService {
     private final AccommodationStore accommodationStore;
 
-    public void stock(Long accommodationRoomId) {
+    public void accommodationRoomStockDecrease(Long accommodationRoomId) {
         AccommodationRoom accommodationRoom = accommodationStore.getAccommodationRoom(accommodationRoomId);
         log.info("stock() : " + accommodationRoom.getStock());
     }

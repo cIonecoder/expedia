@@ -34,11 +34,16 @@ public class BookingService {
             bookingGuestsList.add(bookingGuests);
         });
 
-        /* TODO 재고 */
-        bookingStore.stock(booking.getAccommodationRoomId());
-
         bookingStore.saveBookingGuests(bookingGuestsList);
 
         return resultBooking;
+    }
+
+    /**
+     * 숙박업체 룸 재고 감소
+     * @param accommodationRoomId
+     */
+    public void accommodationRoomStockDecrease(Long accommodationRoomId) {
+        bookingStore.accommodationRoomStockDecrease(accommodationRoomId);
     }
 }
