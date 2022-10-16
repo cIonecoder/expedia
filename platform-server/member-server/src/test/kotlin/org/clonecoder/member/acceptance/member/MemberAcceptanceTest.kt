@@ -1,5 +1,6 @@
 package org.clonecoder.member.acceptance.member
 
+import io.kotest.core.test.TestCase
 import org.clonecoder.member.acceptance.AcceptanceTest
 import org.clonecoder.member.payload.memberRegisterFailPayloads
 import org.clonecoder.member.payload.memberRegisterSuccessPayloads
@@ -22,5 +23,9 @@ internal class MemberAcceptanceTest(
                 `회원 등록 실패`(response)
             }
         }
+    }
+
+    override fun beforeEach(testCase: TestCase) {
+        super.beforeEach(testCase)
     }
 }
