@@ -38,6 +38,6 @@ public class BookingStoreImpl implements BookingStore {
      * @param accommodationRoomId
      */
     public void accommodationRoomStockDecrease(Long accommodationRoomId) {
-        accommodationService.accommodationRoomStockDecrease(accommodationRoomId);
+        accommodationService.stockDecrease(accommodationRoomId);
     }
 }

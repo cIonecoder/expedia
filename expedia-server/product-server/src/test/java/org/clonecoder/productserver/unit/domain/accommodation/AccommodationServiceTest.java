@@ -10,6 +10,12 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
@@ -22,15 +28,31 @@ class AccommodationServiceTest {
     private AccommodationRoomRepository accommodationRoomRepository;
 
     @Test
-    void stock() {
+    void 멀티쓰레드_재고감소() throws InterruptedException {
         // given
-        List<AccommodationRoom> all = accommodationRoomRepository.findAll();
-        Long targetIdx = all.get(0).getId();
+        final Long accommodationRoomIdx = 1L;
+        AccommodationRoom accommodationRoom = accommodationRoomRepository.findById(accommodationRoomIdx).get();
+        int threadCount = accommodationRoom.getStock();
 
-        // given
-        accommodationService.accommodationRoomStockDecrease(targetIdx);
+        ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
+        CountDownLatch countDownLatch = new CountDownLatch(threadCount);
 
         // when
+        IntStream.range(0, threadCount).forEach(e -> executorService.submit(() -> {
+                try {
+                    accommodationService.stockDecrease(accommodationRoomIdx);
+                } finally {
+                    countDownLatch.countDown();
+                }
+            }
+        ));
 
+        countDownLatch.await();
+
+        // then
+        accommodationRoom = accommodationRoomRepository.findById(accommodationRoomIdx).get();
+        int afterStock = accommodationRoom.getStock();
+
+        assertThat(afterStock).isZero();
     }
 }

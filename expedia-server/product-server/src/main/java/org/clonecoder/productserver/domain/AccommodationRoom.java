@@ -29,4 +29,11 @@ public class AccommodationRoom {
     private LocalDateTime lastModifiedAt;
     private String createdBy;
     private LocalDateTime createdAt;
+
+    /**
+     * 재고 감소
+     */
+    public void stockDecrease() {
+        this.stock = this.stock - 1;
+    }
 }
