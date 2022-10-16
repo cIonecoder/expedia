@@ -5,3 +5,7 @@ jar {
 bootJar {
     enabled = true
 }
+
+dependencies {
+    implementation project(':product-server')
+}

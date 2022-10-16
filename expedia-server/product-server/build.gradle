@@ -5,3 +5,8 @@ jar {
 bootJar {
     enabled = true
 }
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.redisson:redisson-spring-boot-starter:3.17.7'
+}

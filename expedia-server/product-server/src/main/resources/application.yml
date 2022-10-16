@@ -11,15 +11,6 @@ spring:
       mode: always
       schema-locations: classpath:accommodation/schema/accommodation.sql
       data-locations: classpath:accommodation/data/accommodation_1.sql
-  # redis
-  redis:
-    lettuce:
-      pool:
-        min-idle: 0
-        max-idle: 8
-        max-active: 8
-    port: 6379
-    host: localhost
 
   # JPA
   jpa:
