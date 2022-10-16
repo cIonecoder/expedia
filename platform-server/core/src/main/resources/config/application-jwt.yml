@@ -1,0 +1,6 @@
+security:
+  jwt:
+    token:
+      secret-key: expedia-secret-key
+      access-token-expire-time: 3600
+      refresh-token-expire-time: 360000

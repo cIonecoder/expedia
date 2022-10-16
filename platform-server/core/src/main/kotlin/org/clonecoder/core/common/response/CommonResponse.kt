@@ -16,6 +16,10 @@ class CommonResponse<T> {
     }
 
     companion object {
+        fun success(): CommonResponse<*> {
+            return success("", "")
+        }
+
         fun <T> success(data: T): CommonResponse<T> {
             return success(data, "")
         }

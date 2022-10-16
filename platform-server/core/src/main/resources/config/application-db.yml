@@ -1,0 +1,21 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:postgresql://postgres:5432/expedia-platform-db
+    username: expedia
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:common/member/schema.sql
+      data-locations: classpath:common/member/data.sql.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true

@@ -3,6 +3,7 @@ package org.clonecoder.member.interfaces.member
 import org.clonecoder.member.application.member.MemberFacade
 import org.clonecoder.core.common.constant.MEMBER_BASE_URL
 import org.clonecoder.core.common.exception.ValidationException
+import org.clonecoder.core.common.response.CommonResponse
 import org.clonecoder.member.interfaces.member.dto.MemberDto
 import org.clonecoder.member.interfaces.member.mapper.MemberDtoMapper
 import org.springframework.validation.BindingResult
@@ -21,11 +22,12 @@ class MemberController(
     fun register(
         @RequestBody @Valid request: MemberDto.RegisterRequest,
         bindingResult: BindingResult
-    ) {
+    ): CommonResponse<*> {
         if (bindingResult.hasErrors()) {
             throw ValidationException()
         }
         val member = MemberDtoMapper.of(request)
         memberFacade.register(member)
+        return CommonResponse.success()
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.EnableCaching
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @EnableCaching
-@ConfigurationPropertiesScan("org.clonecoder.core.common.properties")
+@ConfigurationPropertiesScan("org.clonecoder.auth.common.properties")
 @EnableJpaRepositories(basePackages = ["org.clonecoder.core.domain"])
 @EntityScan(basePackages = ["org.clonecoder.core.domain"])
 @SpringBootApplication(
