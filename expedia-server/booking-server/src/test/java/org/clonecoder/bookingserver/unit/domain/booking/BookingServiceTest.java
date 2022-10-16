@@ -9,6 +9,8 @@ import org.clonecoder.bookingserver.infrastructure.BookingRepository;
 import org.clonecoder.bookingserver.interfaces.dto.BookingDto;
 import org.clonecoder.bookingserver.interfaces.dto.BookingGuestsDto;
 import org.clonecoder.bookingserver.interfaces.dto.RequestBookingDto;
+import org.clonecoder.productserver.domain.AccommodationRoom;
+import org.clonecoder.productserver.infrastructure.AccommodationRoomRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.clonecoder.bookingserver.param.ParamDto.예약_생성_정보_셋팅;
@@ -38,6 +44,9 @@ class BookingServiceTest {
 
     @Autowired
     private BookingGuestsRepository bookingGuestsRepository;
+
+    @Autowired
+    private AccommodationRoomRepository accommodationRoomRepository;
 
     private final RequestBookingDto.saveDto requestBookingSaveDto = new RequestBookingDto.saveDto();
 
@@ -57,9 +66,14 @@ class BookingServiceTest {
                 .map(BookingGuestsDto::toCommand)
                 .collect(Collectors.toList());
 
+        AccommodationRoom accommodationRoom = accommodationRoomRepository.findById(bookingDto.getAccommodationRoomId()).get();
+        int beforeStock = accommodationRoom.getStock();
+
         // when  : 예약 정보를 기반으로 생성 요청
         Booking resultBooking = bookingService.saveBooking(bookingDto.toCommand(), bookingGuestsCommandList);
 
+        accommodationRoom = accommodationRoomRepository.findById(bookingDto.getAccommodationRoomId()).get();
+        int afterStock = accommodationRoom.getStock();
 
         // then
         Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
@@ -76,5 +90,8 @@ class BookingServiceTest {
                 .map(BookingGuests::getGuestFee)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         assertThat(findBooking.get().getBookingTotalFee()).isEqualTo(totalFee);
+
+        // 4) 재고 1 감소 체크
+        assertThat(beforeStock - 1).isEqualTo(afterStock);
     }
 }

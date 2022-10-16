@@ -6,6 +6,7 @@ import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingStore;
 import org.clonecoder.productserver.domain.accommodation.AccommodationService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,7 +37,6 @@ public class BookingStoreImpl implements BookingStore {
      * 예약건에 대한 재고 설정
      * @param accommodationRoomId
      */
-    @Override
     public void accommodationRoomStockDecrease(Long accommodationRoomId) {
         accommodationService.accommodationRoomStockDecrease(accommodationRoomId);
     }
