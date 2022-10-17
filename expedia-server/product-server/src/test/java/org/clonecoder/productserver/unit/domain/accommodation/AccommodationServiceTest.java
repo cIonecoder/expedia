@@ -2,14 +2,13 @@ package org.clonecoder.productserver.unit.domain.accommodation;
 
 import org.clonecoder.productserver.domain.AccommodationRoom;
 import org.clonecoder.productserver.domain.accommodation.AccommodationService;
+import org.clonecoder.productserver.domain.accommodation.AccommodationStore;
 import org.clonecoder.productserver.infrastructure.AccommodationRoomRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,6 +21,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class AccommodationServiceTest {
     @Autowired
     private AccommodationService accommodationService;
+
+    @Autowired
+    private AccommodationStore accommodationStore;
 
     @Autowired
     private AccommodationRoomRepository accommodationRoomRepository;
@@ -39,7 +41,7 @@ class AccommodationServiceTest {
         // when
         IntStream.range(0, threadCount).forEach(e -> executorService.submit(() -> {
                 try {
-                    accommodationService.stockDecrease(accommodationRoomIdx);
+                    accommodationStore.stockDecrease(accommodationRoomIdx);
                 } finally {
                     countDownLatch.countDown();
                 }
