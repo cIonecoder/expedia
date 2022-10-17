@@ -1,1 +1,1 @@
-INSERT INTO member(email, password, active) VALUES ("designjava@naver.com", "123!abACC123", 1)
+-- INSERT INTO member(email, password, active) VALUES ("designjava@naver.com", "123!abACC123", 1)

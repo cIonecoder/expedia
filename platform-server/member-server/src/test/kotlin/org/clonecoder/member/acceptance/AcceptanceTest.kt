@@ -2,16 +2,15 @@ package org.clonecoder.member.acceptance
 
 import io.kotest.core.spec.style.FeatureSpec
 import io.restassured.RestAssured
-import org.clonecoder.core.config.DataSourceConfig
+//import org.clonecoder.core.config.DataSourceConfig
 import org.clonecoder.member.support.DatabaseCleanup
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.context.annotation.Import
-import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestConstructor
 import org.springframework.test.context.TestConstructor.AutowireMode.ALL
 
-@Import(value = [DataSourceConfig::class])
+//@Import(value = [DataSourceConfig::class])
 @TestConstructor(autowireMode = ALL)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AcceptanceTest(

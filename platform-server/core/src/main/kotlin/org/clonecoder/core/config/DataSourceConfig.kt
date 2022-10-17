@@ -2,6 +2,7 @@ package org.clonecoder.core.config
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
@@ -19,8 +20,10 @@ import javax.sql.DataSource
 @Configuration
 class DataSourceConfig {
 
+    private val log = LoggerFactory.getLogger(this.javaClass)
+
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.hikari")
+    @ConfigurationProperties(prefix = "datasource.hikari")
     fun dataSourceHikariConfig(): HikariConfig = HikariConfig()
 
     @Primary
