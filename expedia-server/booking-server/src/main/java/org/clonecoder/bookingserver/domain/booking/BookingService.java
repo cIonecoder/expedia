@@ -5,7 +5,9 @@ import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.command.BookingCommand;
 import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
+import org.clonecoder.productserver.domain.accommodation.AccommodationStore;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingService {
     private final BookingStore bookingStore;
+    private final AccommodationStore accommodationStore;
 
     /**
      * 예약 저장
@@ -21,6 +24,7 @@ public class BookingService {
      * @param bookingGuestsCommandList
      * @return
      */
+    @Transactional
     public Booking saveBooking(BookingCommand bookingCommand, List<BookingGuestsCommand> bookingGuestsCommandList) {
         /* booking 저장 */
         Booking booking = bookingCommand.toEntity();
@@ -34,7 +38,12 @@ public class BookingService {
             bookingGuestsList.add(bookingGuests);
         });
 
+        /* 예약 저장 */
         bookingStore.saveBookingGuests(bookingGuestsList);
+
+        /* 예약건에 대한 재고 감소 */
+        accommodationStore.stockDecrease(resultBooking.getAccommodationRoomId());
+
         return resultBooking;
     }
 }

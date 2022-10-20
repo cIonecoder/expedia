@@ -1,4 +1,4 @@
-package com.clonecoder.productserver;
+package org.clonecoder.productserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -56,7 +56,7 @@ public class BookingDocumentationTestFilter {
                 responseFields(
                         fieldWithPath("status").description("결과코드"),
                         fieldWithPath("message").description("결과메시지"),
-                        fieldWithPath("data").description("결과데이터")
+                        fieldWithPath("body").description("결과데이터")
                 )
         );
     }

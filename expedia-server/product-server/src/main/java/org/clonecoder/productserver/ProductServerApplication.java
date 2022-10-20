@@ -1,4 +1,4 @@
-package com.clonecoder.productserver;
+package org.clonecoder.productserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
