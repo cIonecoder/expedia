@@ -1,17 +1,14 @@
 package org.clonecoder.bookingserver.common.exception;
 
+import lombok.Getter;
 import org.clonecoder.bookingserver.common.enums.EnumMessage;
 
 public class BadRequestException extends RuntimeException {
-    private String message;
-
-    public BadRequestException(String message) {
-        super(message);
-        this.message = message;
-    }
+    @Getter
+    private final EnumMessage enumMessage;
 
     public BadRequestException(EnumMessage enumMessage) {
         super(enumMessage.getMessage());
-        this.message = enumMessage.getMessage();
+        this.enumMessage = enumMessage;
     }
 }
