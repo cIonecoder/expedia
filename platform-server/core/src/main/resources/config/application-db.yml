@@ -1,7 +1,7 @@
 datasource:
   hikari:
-    jdbc-url: "jdbc:postgresql://192.168.160.1:5432/expedia-platform-db"
-    driver-class-name: org.postgresql.Driver
+    jdbc-url: "jdbc:mysql://localhost:3306/platform?useSSL=false&allowPublicKeyRetrieval=true"
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: expedia
     password: 1234
     maximum-pool-size: 5
@@ -14,7 +14,7 @@ spring:
     init:
       mode: always
       schema-locations: classpath:common/member/schema.sql
-      data-locations: classpath:common/member/data.sql.sql
+      data-locations: classpath:common/member/data.sql
   jpa:
     hibernate:
       ddl-auto: update

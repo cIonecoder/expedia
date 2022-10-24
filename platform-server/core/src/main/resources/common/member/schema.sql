@@ -1,7 +1,4 @@
-DROP TABLE IF EXISTS member;
-DROP TABLE IF EXISTS member_info;
-
-CREATE TABLE member(
+CREATE TABLE IF NOT EXISTS member(
     id           INT(11)  unsigned auto_increment COMMENT '일련번호',
     email        VARCHAR(255) NOT NULL COMMENT '이메일',
     password     VARCHAR(255) NOT NULL COMMENT '패스워드',
@@ -15,7 +12,7 @@ CREATE TABLE member(
     UNIQUE (email)
 );
 
-CREATE TABLE member_info(
+CREATE TABLE IF NOT EXISTS member_info(
     id              INT(11)  unsigned auto_increment COMMENT '유저 정보 일련번호',
     account_id  INT(11) unsigned NOT NULL COMMENT '유저 계정 일련번호',
     last_name  VARCHAR(50) NOT NULL COMMENT '성',

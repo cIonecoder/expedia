@@ -19,6 +19,6 @@ class AcceptanceTest(
 ): FeatureSpec() {
     init {
         RestAssured.port = port
-        databaseCleanup.execute()
+//        databaseCleanup.execute()
     }
 }

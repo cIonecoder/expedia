@@ -59,8 +59,8 @@ subprojects {
         // Databasse
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.redisson:redisson:3.17.6")
-//        runtimeOnly("mysql:mysql-connector-java")
-        runtimeOnly("org.postgresql:postgresql")
+        runtimeOnly("mysql:mysql-connector-java")
+//        runtimeOnly("org.postgresql:postgresql")
 
         // Spring Rest Docs
         testImplementation("org.springframework.restdocs:spring-restdocs-restassured")
