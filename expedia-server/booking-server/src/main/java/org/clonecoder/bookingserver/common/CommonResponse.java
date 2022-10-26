@@ -1,16 +1,14 @@
 package org.clonecoder.bookingserver.common;
 
-import org.clonecoder.bookingserver.common.enums.EnumMessage;
+import org.clonecoder.bookingserver.common.enums.ExceptionMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.HashMap;
-
 public class CommonResponse {
-    public static <T> ResponseEntity<ResponseDto<T>> send(HttpStatus status, EnumMessage enumMessage, T body) {
+    public static <T> ResponseEntity<ResponseDto<T>> send(HttpStatus status, ExceptionMessage exceptionMessage, T body) {
         ResponseDto<T> responseDto = ResponseDto.<T>builder()
-                .status(enumMessage.getCode())
-                .message(enumMessage.getMessage())
+                .status(exceptionMessage.getCode())
+                .message(exceptionMessage.getMessage())
                 .body(body)
                 .build();
 
@@ -18,10 +16,10 @@ public class CommonResponse {
     }
 
     public static ResponseEntity<?> send() {
-        return CommonResponse.send(HttpStatus.OK, EnumMessage.OK, "");
+        return CommonResponse.send(HttpStatus.OK, ExceptionMessage.OK, "");
     }
 
     public static <T> ResponseEntity<ResponseDto<T>> send(T object) {
-        return CommonResponse.send(HttpStatus.OK, EnumMessage.OK, object);
+        return CommonResponse.send(HttpStatus.OK, ExceptionMessage.OK, object);
     }
 }

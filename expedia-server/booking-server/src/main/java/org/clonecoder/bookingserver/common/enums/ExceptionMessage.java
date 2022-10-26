@@ -2,7 +2,7 @@ package org.clonecoder.bookingserver.common.enums;
 
 import lombok.Getter;
 
-public enum EnumMessage {
+public enum ExceptionMessage {
     OK                          (0, ""),
     HTTP_INTERNAL_SERVER_ERROR  (5001, "서버에러가 발생하여 요청사항을 수행할 수 없습니다."),
 
@@ -16,7 +16,7 @@ public enum EnumMessage {
     @Getter
     private final String message;
 
-    EnumMessage(int code, String message) {
+    ExceptionMessage(int code, String message) {
         this.code = code;
         this.message = message;
     }
