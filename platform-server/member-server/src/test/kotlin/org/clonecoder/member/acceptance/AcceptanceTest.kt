@@ -6,11 +6,12 @@ import io.restassured.RestAssured
 import org.clonecoder.member.support.DatabaseCleanup
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
-import org.springframework.context.annotation.Import
 import org.springframework.test.context.TestConstructor
 import org.springframework.test.context.TestConstructor.AutowireMode.ALL
+import org.springframework.test.context.TestPropertySource
 
 //@Import(value = [DataSourceConfig::class])
+@TestPropertySource(properties = ["spring.config.location=classpath:application-test.yml"])
 @TestConstructor(autowireMode = ALL)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AcceptanceTest(

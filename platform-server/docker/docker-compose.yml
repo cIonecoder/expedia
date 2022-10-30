@@ -5,15 +5,18 @@
    # get key {keyName}
 # mysql-cli
   # mysql -u root -p
-  # create user 'expedia'@'%' identified '1234';
+  # use mysql;
+  # select user, host from user;
+  # create user 'expedia'@'%' identified by '1234';
   # grant all privileges on *.* to 'expedia'@'%';
   # flush privileges;
   # mysql -u expedia -p
+  # show databases;
+  # use platform;
+  # show tables;
+# API 테스트
+  # Login 요청
 
-# Test 방법
-  # appliation-db.yml > host > localhost 로 변경
-  # docker 로 mysql 실행
-  # build
 version: "3.9"
 
 services:
