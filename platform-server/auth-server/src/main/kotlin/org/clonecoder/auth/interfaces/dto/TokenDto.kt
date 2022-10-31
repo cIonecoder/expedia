@@ -1,7 +1,7 @@
 package org.clonecoder.auth.interfaces.dto
 
 import org.clonecoder.auth.security.token.TokenIssueStatus
-import org.clonecoder.member.interfaces.validator.Password
+import org.clonecoder.core.common.validator.Password
 import javax.validation.constraints.Pattern
 
 class TokenDto {

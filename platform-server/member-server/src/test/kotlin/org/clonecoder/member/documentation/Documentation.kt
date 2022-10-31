@@ -12,9 +12,10 @@ import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint
 import org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.documentationConfiguration
 import org.springframework.test.context.ActiveProfiles
+import org.springframework.test.context.TestPropertySource
 
 
-@ActiveProfiles("test")
+@TestPropertySource(properties = ["spring.config.location=classpath:application-test.yml"])
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(RestDocumentationExtension::class)
 internal class Documentation {

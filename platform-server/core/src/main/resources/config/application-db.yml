@@ -1,0 +1,29 @@
+#datasource:
+#  hikari:
+#    jdbc-url: "jdbc:mysql://expedia-mysql:3306/platform?useSSL=false&allowPublicKeyRetrieval=true"
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: expedia
+#    password: 1234
+#    maximum-pool-size: 5
+#    minimum-idle: 1
+#    connection-timeout: 3000
+#    max-lifetime: 50000
+#    idle-timeout: 50000
+spring:
+  datasource:
+    url: jdbc:mysql://expedia-mysql:3306/platform?useSSL=false&allowPublicKeyRetrieval=true
+    username: expedia
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:common/member/schema.sql
+      data-locations: classpath:common/member/data.sql
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
