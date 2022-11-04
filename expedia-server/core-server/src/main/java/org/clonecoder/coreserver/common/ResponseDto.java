@@ -1,4 +1,4 @@
-package org.clonecoder.productserver.common;
+package org.clonecoder.coreserver.common;
 
 import lombok.Builder;
 import lombok.Getter;

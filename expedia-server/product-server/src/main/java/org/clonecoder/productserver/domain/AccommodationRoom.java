@@ -3,10 +3,16 @@ package org.clonecoder.productserver.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.clonecoder.productserver.common.enums.ExceptionMessage;
-import org.clonecoder.productserver.common.exception.BadRequestException;
+import org.clonecoder.coreserver.common.enums.ExceptionMessage;
+import org.clonecoder.coreserver.common.exception.BadRequestException;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Getter

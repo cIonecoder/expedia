@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@ComponentScan(basePackages = {"org.clonecoder.bookingserver", "org.clonecoder.productserver"})
+@ComponentScan(basePackages = {"org.clonecoder"})
 public class BookingServerApplication {
 
     public static void main(String[] args) {
