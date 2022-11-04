@@ -2,6 +2,8 @@ package org.clonecoder.productserver.infrastructure;
 
 import lombok.extern.slf4j.Slf4j;
 import org.clonecoder.productserver.common.aop.RedissonLock;
+import org.clonecoder.productserver.common.enums.ExceptionMessage;
+import org.clonecoder.productserver.common.exception.BadRequestException;
 import org.clonecoder.productserver.domain.AccommodationRoom;
 import org.clonecoder.productserver.domain.accommodation.AccommodationStore;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +21,13 @@ public class AccommodationStoreImpl implements AccommodationStore {
     public void stockDecrease(Long accommodationRoomId) {
         log.info("Thread Name : " + Thread.currentThread().getName());
 
-        AccommodationRoom accommodationRoom = accommodationRoomRepository.findById(accommodationRoomId).get();
+        Optional<AccommodationRoom> byId = accommodationRoomRepository.findById(accommodationRoomId);
+
+        if (byId.isEmpty()) {
+            throw new BadRequestException(ExceptionMessage.NOT_EXIST_ACCOMMODATION_ROOM);
+        }
+
+        AccommodationRoom accommodationRoom = byId.get();
         log.info("stock() : " + accommodationRoom.getStock());
 
         accommodationRoom.stockDecrease();
