@@ -17,7 +17,12 @@ import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@Sql({"classpath:accommodation/schema/accommodation.sql", "classpath:accommodation/data/accommodation_1.sql"})
+@Sql({"classpath:accommodation/schema/accommodation.sql"
+        , "classpath:accommodation/data/accommodation_1.sql"
+        , "classpath:accommodation/data/accommodation_2.sql"
+        , "classpath:accommodation/data/accommodation_3.sql"
+        , "classpath:accommodation/data/accommodation_code.sql"}
+)
 class AccommodationServiceTest {
     @Autowired
     private AccommodationService accommodationService;

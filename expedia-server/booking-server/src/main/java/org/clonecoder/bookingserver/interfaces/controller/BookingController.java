@@ -2,13 +2,13 @@ package org.clonecoder.bookingserver.interfaces.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.clonecoder.bookingserver.application.booking.BookingFacade;
-import org.clonecoder.bookingserver.common.CommonResponse;
-import org.clonecoder.bookingserver.common.ResponseDto;
 import org.clonecoder.bookingserver.domain.command.BookingCommand;
 import org.clonecoder.bookingserver.domain.command.BookingGuestsCommand;
 import org.clonecoder.bookingserver.interfaces.dto.RequestBookingDto;
 import org.clonecoder.bookingserver.interfaces.mapper.BookingDtoMapper;
 import org.clonecoder.bookingserver.interfaces.mapper.BookingGuestsDtoMapper;
+import org.clonecoder.coreserver.common.CommonResponse;
+import org.clonecoder.coreserver.common.ResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

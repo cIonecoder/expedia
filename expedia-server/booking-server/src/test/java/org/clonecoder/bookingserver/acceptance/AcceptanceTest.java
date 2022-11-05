@@ -1,12 +1,12 @@
 package org.clonecoder.bookingserver.acceptance;
 
 import io.restassured.RestAssured;
+import org.clonecoder.bookingserver.BookingTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AcceptanceTest {
+public class AcceptanceTest extends BookingTest {
     @LocalServerPort
     private int port;
 

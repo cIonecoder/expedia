@@ -1,6 +1,7 @@
 package org.clonecoder.bookingserver.domain.booking;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.command.BookingCommand;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BookingService {
     private final BookingStore bookingStore;
     private final AccommodationStore accommodationStore;
@@ -42,6 +44,7 @@ public class BookingService {
         bookingStore.saveBookingGuests(bookingGuestsList);
 
         /* 예약건에 대한 재고 감소 */
+        log.info("resultBooking.getAccommodationRoomId() : " + resultBooking.getAccommodationRoomId());
         accommodationStore.stockDecrease(resultBooking.getAccommodationRoomId());
 
         return resultBooking;

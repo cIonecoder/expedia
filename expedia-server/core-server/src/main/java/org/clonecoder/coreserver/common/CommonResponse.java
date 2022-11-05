@@ -1,6 +1,6 @@
-package org.clonecoder.productserver.common;
+package org.clonecoder.coreserver.common;
 
-import org.clonecoder.productserver.common.enums.ExceptionMessage;
+import org.clonecoder.coreserver.common.enums.ExceptionMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

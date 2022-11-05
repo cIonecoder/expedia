@@ -6,9 +6,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Component;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"org.clonecoder.bookingserver", "org.clonecoder.productserver", "org.clonecoder.coreserver"})
 @EnableJpaAuditing
-@ComponentScan(basePackages = {"org.clonecoder.bookingserver", "org.clonecoder.productserver"})
 public class BookingServerApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.clonecoder.productserver.common.enums;
+package org.clonecoder.coreserver.common.enums;
 
 import lombok.Getter;
 

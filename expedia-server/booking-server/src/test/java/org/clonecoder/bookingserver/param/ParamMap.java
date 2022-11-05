@@ -24,7 +24,7 @@ public final class ParamMap {
     private static Map<String, Object> 예약_정보_셋팅() {
         Map<String, Object> params = new HashMap<>();
         params.put("bookingNo", "A25BD-20220928");
-        params.put("accommodationRoomId", 9);
+        params.put("accommodationRoomId", 1L);
         params.put("bookingUserId", "test1234");
         params.put("bookingLastName", "KIM");
         params.put("bookingFirstName", "SEOHAE");

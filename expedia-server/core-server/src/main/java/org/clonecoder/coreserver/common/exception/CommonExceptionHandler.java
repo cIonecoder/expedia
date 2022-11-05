@@ -1,9 +1,9 @@
-package org.clonecoder.bookingserver.common.exception;
+package org.clonecoder.coreserver.common.exception;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.clonecoder.bookingserver.common.CommonResponse;
-import org.clonecoder.bookingserver.common.enums.ExceptionMessage;
+import org.clonecoder.coreserver.common.CommonResponse;
+import org.clonecoder.coreserver.common.enums.ExceptionMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

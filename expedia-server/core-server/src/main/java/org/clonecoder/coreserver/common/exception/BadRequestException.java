@@ -1,7 +1,7 @@
-package org.clonecoder.bookingserver.common.exception;
+package org.clonecoder.coreserver.common.exception;
 
 import lombok.Getter;
-import org.clonecoder.bookingserver.common.enums.ExceptionMessage;
+import org.clonecoder.coreserver.common.enums.ExceptionMessage;
 
 public class BadRequestException extends RuntimeException {
     @Getter

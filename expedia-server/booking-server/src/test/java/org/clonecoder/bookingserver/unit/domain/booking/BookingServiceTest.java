@@ -1,5 +1,6 @@
 package org.clonecoder.bookingserver.unit.domain.booking;
 
+import org.clonecoder.bookingserver.BookingTest;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
@@ -26,9 +27,7 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.clonecoder.bookingserver.param.ParamDto.예약_생성_정보_셋팅;
 
-@SpringBootTest
-@Sql({"classpath:accommodation/schema/accommodation.sql", "classpath:accommodation/data/accommodation_1.sql"})
-class BookingServiceTest {
+class BookingServiceTest extends BookingTest {
     @Autowired
     private BookingService bookingService;
 
@@ -70,10 +69,13 @@ class BookingServiceTest {
 
         // then
         Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
-        List<BookingGuests> findBookingGuests = bookingGuestsRepository.findAll();
+        List<BookingGuests> findBookingGuests =
+                bookingGuestsRepository.findAll().stream()
+                        .filter(bookingGuests -> bookingGuests.getBooking().getId().equals(resultBooking.getId()))
+                        .collect(Collectors.toList());
 
         // 1) 원하는 예약이 생성됨
-        assertThat(findBooking.get().getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
+        assertThat(resultBooking.getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
 
         // 2) 예약한 게스트 수가 일치해야함
         assertThat(findBookingGuests.size()).isEqualTo(requestBookingSaveDto.getBookingGuestsDtoList().size());
