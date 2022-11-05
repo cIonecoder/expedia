@@ -1,5 +1,6 @@
 package org.clonecoder.bookingserver.unit.domain.booking;
 
+import org.clonecoder.bookingserver.BookingTest;
 import org.clonecoder.bookingserver.domain.Booking;
 import org.clonecoder.bookingserver.domain.BookingGuests;
 import org.clonecoder.bookingserver.domain.booking.BookingService;
@@ -26,9 +27,7 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.clonecoder.bookingserver.param.ParamDto.예약_생성_정보_셋팅;
 
-@SpringBootTest
-@Sql({"classpath:accommodation/schema/accommodation.sql", "classpath:accommodation/data/accommodation_1.sql"})
-class BookingServiceTest {
+class BookingServiceTest extends BookingTest {
     @Autowired
     private BookingService bookingService;
 

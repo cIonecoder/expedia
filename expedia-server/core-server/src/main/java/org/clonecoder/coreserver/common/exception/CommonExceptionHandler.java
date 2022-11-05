@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 @RequiredArgsConstructor
-public class ProductCommonExceptionHandler {
+public class CommonExceptionHandler {
     /**
      * 400 에러
      * @param e

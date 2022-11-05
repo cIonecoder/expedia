@@ -9,8 +9,8 @@ spring:
   sql:
     init:
       mode: always
-      schema-locations: classpath:accommodation/schema/accommodation.sql
-      data-locations: classpath:accommodation/data/accommodation_1.sql
+      schema-locations: classpath:accommodation/schema/*.sql
+      data-locations: classpath:accommodation/data/*.sql
 
   # JPA
   jpa:
