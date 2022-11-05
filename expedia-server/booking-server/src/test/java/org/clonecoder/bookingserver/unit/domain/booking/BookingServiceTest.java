@@ -69,10 +69,13 @@ class BookingServiceTest extends BookingTest {
 
         // then
         Optional<Booking> findBooking = bookingRepository.findById(resultBooking.getId());
-        List<BookingGuests> findBookingGuests = bookingGuestsRepository.findAll();
+        List<BookingGuests> findBookingGuests =
+                bookingGuestsRepository.findAll().stream()
+                        .filter(bookingGuests -> bookingGuests.getBooking().getId().equals(resultBooking.getId()))
+                        .collect(Collectors.toList());
 
         // 1) 원하는 예약이 생성됨
-        assertThat(findBooking.get().getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
+        assertThat(resultBooking.getId()).isEqualTo(findBookingGuests.get(0).getBooking().getId());
 
         // 2) 예약한 게스트 수가 일치해야함
         assertThat(findBookingGuests.size()).isEqualTo(requestBookingSaveDto.getBookingGuestsDtoList().size());
